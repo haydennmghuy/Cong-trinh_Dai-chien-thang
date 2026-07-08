@@ -6,17 +6,17 @@
    ===================================================================== */
 
 :root {
-  --forest:        #1C3627; /* Rich forest green */
-  --forest-dark:   #10221A; /* Deep dark green */
-  --wood:          #5A3825;
-  --wood-light:    #7A4E32;
-  --smoke:         #EFEAE0; /* Traditional warm cream background */
-  --smoke-warm:    #E5DECE;
-  --bronze:        #AD8748;
-  --bronze-light:  #C7A567;
-  --ink:           #221E19;
-  --ink-soft:      #4A443C;
-  --white:         #FBFAF6;
+  --forest:        #1C523A; /* Classic French colonial shutter green */
+  --forest-dark:   #113525; /* Deep dark shutter green */
+  --wood:          #5A4232;
+  --wood-light:    #7E624E;
+  --smoke:         #FAF2DC; /* Warm historic French yellow-cream ("Vàng Dinh Tỉnh Trưởng") */
+  --smoke-warm:    #EADFBC; /* Deeper warm sand/ochre */
+  --bronze:        #A3761E; /* Aged bronze */
+  --bronze-light:  #D4AF37; /* Vintage gold */
+  --ink:           #2A221C; /* Soft charcoal for warm contrast */
+  --ink-soft:      #5E5045;
+  --white:         #FCFAF4;
 
   --font-display: 'Playfair Display', serif;
   --font-serif:   'Playfair Display', serif;
@@ -25,7 +25,7 @@
   --font-mono:    'Space Mono', monospace;
 
   --radius: 12px;
-  --shadow-soft: 0 16px 40px rgba(16, 34, 26, 0.15);
+  --shadow-soft: 0 16px 40px rgba(17, 53, 37, 0.15);
   --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --marquee-star-size: 26px;
   --marquee-star-gap: 72px;
@@ -106,7 +106,7 @@ h3 {
   border-color: var(--bronze);
   color: var(--white);
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(199, 165, 103, 0.4);
+  box-shadow: 0 12px 28px rgba(212, 175, 55, 0.4);
 }
 
 .btn-outline {
@@ -243,7 +243,7 @@ h3 {
 }
 
 .lang-toggle {
-  border: 1.5px solid rgba(199, 165, 103, 0.25);
+  border: 1.5px solid rgba(212, 175, 55, 0.25);
   background: rgba(249, 246, 240, 0.85);
   color: var(--forest-dark);
   padding: 0.45rem 0.85rem;
@@ -315,7 +315,7 @@ h3 {
   overflow: hidden;
   min-height: min(88vh, 820px);
   background:
-    linear-gradient(95deg, rgba(16, 34, 26, 0.88) 0%, rgba(16, 34, 26, 0.58) 38%, rgba(16, 34, 26, 0.28) 100%),
+    linear-gradient(95deg, rgba(17, 53, 37, 0.9) 0%, rgba(17, 53, 37, 0.6) 38%, rgba(17, 53, 37, 0.3) 100%),
     url("Ảnh/hero_background.png") center/cover no-repeat;
   color: var(--white);
 }
@@ -642,7 +642,7 @@ h3 {
   background: var(--bronze);
   color: var(--white);
   transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(199, 165, 103, 0.4);
+  box-shadow: 0 6px 18px rgba(212, 175, 55, 0.4);
 }
 
 .audio-time {
@@ -719,7 +719,7 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(16, 34, 26, 0.72);
+  background: rgba(17, 53, 37, 0.75);
   pointer-events: none;
 }
 
@@ -790,7 +790,7 @@ h3 {
   font-size: var(--marquee-star-size);
   color: var(--bronze-light);
   line-height: 1;
-  text-shadow: 0 0 4px rgba(199, 165, 103, 0.4);
+  text-shadow: 0 0 4px rgba(212, 175, 55, 0.45);
 }
 
 .timeline-marquee.marquee-top .marquee-track { padding: 0; }

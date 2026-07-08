@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Thị trấn Phước Vĩnh, huyện Phú Giáo, tỉnh Bình Dương.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@600;700&family=Noto+Sans:wght@300;400;500;600;700&family=Noto+Serif:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
@@ -83,6 +81,7 @@
           <span>Đang tải mô hình 3D...</span>
         </div>
       </model-viewer>
+      <div class="model3d-help" data-i18n-key="model3d.help">Kéo để xoay • Cuộn để phóng to</div>
     </div>
   </div>
 </section>
@@ -318,7 +317,7 @@
   const audioKnob = document.getElementById('audio-knob');
 
   const narrationAudio = new Audio();
-  narrationAudio.preload = 'metadata';
+  narrationAudio.preload = 'auto';
 
   const getNarrationSrc = (lang) => lang === 'en'
     ? 'Voice/EnglishVoice.mp3'
@@ -331,31 +330,29 @@
   };
 
   const formatTime = (seconds) => {
-    if (!Number.isFinite(seconds)) return '00:00';
+    if (!Number.isFinite(seconds) || Number.isNaN(seconds)) return '00:00';
     const mins = Math.floor(seconds / 60);
     const secs = Math.floor(seconds % 60);
     return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
   };
 
   const updateAudioProgress = () => {
-    if (!narrationAudio.duration) return;
-    const progress = (narrationAudio.currentTime / narrationAudio.duration) * 100;
-    if (audioProgress) audioProgress.style.width = `${progress}%`;
-    if (audioKnob) audioKnob.style.left = `${progress}%`;
-    if (audioCurrentTime) audioCurrentTime.textContent = formatTime(narrationAudio.currentTime);
-    if (audioDuration) audioDuration.textContent = formatTime(narrationAudio.duration);
+    const currentTime = narrationAudio.currentTime || 0;
+    const duration = narrationAudio.duration || 0;
+    if (duration > 0) {
+      const progress = (currentTime / duration) * 100;
+      if (audioProgress) audioProgress.style.width = `${progress}%`;
+      if (audioKnob) audioKnob.style.left = `${progress}%`;
+      if (audioDuration) audioDuration.textContent = formatTime(duration);
+    }
+    if (audioCurrentTime) audioCurrentTime.textContent = formatTime(currentTime);
   };
 
   const playNarration = () => {
-    const src = getNarrationSrc(currentLang);
-    if (narrationAudio.src !== window.location.href + src && narrationAudio.src !== src) {
-      narrationAudio.src = src;
-      narrationAudio.load();
-    }
-
     narrationAudio.play().then(() => {
       setAudioState(true);
-    }).catch(() => {
+    }).catch((err) => {
+      console.error("Audio playback error:", err);
       setAudioState(false);
     });
   };
@@ -387,8 +384,13 @@
   }
 
   narrationAudio.addEventListener('timeupdate', updateAudioProgress);
+  narrationAudio.addEventListener('durationchange', updateAudioProgress);
   narrationAudio.addEventListener('loadedmetadata', updateAudioProgress);
-  narrationAudio.addEventListener('ended', () => setAudioState(false));
+  narrationAudio.addEventListener('ended', () => {
+    setAudioState(false);
+    narrationAudio.currentTime = 0;
+    updateAudioProgress();
+  });
   narrationAudio.addEventListener('pause', () => setAudioState(false));
   narrationAudio.addEventListener('play', () => setAudioState(true));
 
@@ -449,6 +451,7 @@
       'hero.secondary': 'Nghe thuyết minh',
       'model3d.title': 'TƯỢNG ĐÀI 3D',
       'model3d.body': 'Khám phá Tượng đài Chiến thắng Phước Thành qua mô hình 3D tương tác. Công trình được xây dựng bằng đá hoa cương, cao 13 mét, tọa lạc trong khuôn viên vườn hoa trung tâm thị trấn Phước Vĩnh với tổng diện tích hơn 12.059 m². Sử dụng chuột hoặc ngón tay để xoay, phóng to và quan sát từ mọi góc độ.',
+      'model3d.help': 'Kéo để xoay • Cuộn để phóng to',
       'narration.title': 'THUYẾT MINH DI TÍCH',
       'narration.body': 'Cách đây hơn 60 năm, đêm 17 rạng ngày 18 tháng 9 năm 1961, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội. Chiến thắng đó là nỗi kinh hoàng của ngụy quân ngụy quyền lúc bấy giờ, là một tin sét đánh đối với Chính phủ Kennedy và Hội đồng An ninh quốc gia Mỹ. Tướng Westmoreland trong hồi ký đã thú nhận: "Mùa thu năm 1961 đã chứng kiến bước đầu tiên họ tạm thời chiếm được tỉnh lỵ Phước Thành." Tài liệu mật Lầu Năm Góc cũng xác nhận: đây là trận tiến công lớn nhất có tác dụng làm cho Sài Gòn nhốn nháo. Chiến thắng Phước Thành thực sự là tiếng còi báo hiệu sự phá sản của chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ áp dụng tại Việt Nam giai đoạn 1960–1965.',
       'narration.button': 'Bắt đầu nghe',
@@ -496,6 +499,7 @@
       'hero.secondary': 'Listen to narration',
       'model3d.title': '3D MONUMENT',
       'model3d.body': 'Explore the Phuoc Thanh Victory Monument through an interactive 3D model. Built of granite, standing 13 meters tall, the monument is located in the central park of Phuoc Vinh town, spanning over 12,059 m². Use your mouse or fingers to rotate, zoom, and observe from every angle.',
+      'model3d.help': 'Drag to rotate • Scroll to zoom',
       'narration.title': 'SITE NARRATION',
       'narration.body': 'Over sixty years ago, on the night of September 17th to the morning of September 18th, 1961, the revolutionary forces achieved the resounding Phuoc Thanh Victory. This victory was a nightmare for the puppet army and government, a bolt from the blue for the Kennedy administration and the US National Security Council. General Westmoreland admitted in his memoirs: "The autumn of 1961 witnessed the first step when they temporarily captured the Phuoc Thanh provincial capital." The Pentagon Papers also confirmed this was the largest attack that caused panic in Saigon. The Phuoc Thanh Victory truly signaled the bankruptcy of the American imperialists\' "Special War" strategy applied in Vietnam during 1960–1965.',
       'narration.button': 'Start listening',
@@ -551,15 +555,18 @@
       languageToggle.setAttribute('aria-label', lang === 'vi' ? 'Switch to English' : 'Chuyển sang tiếng Việt');
     }
 
-    // Switch audio source on language change
-    const wasPlaying = !narrationAudio.paused;
-    if (narrationAudio.src) {
-      narrationAudio.pause();
-      narrationAudio.currentTime = 0;
-      narrationAudio.src = getNarrationSrc(lang);
+    // Set correct source and load
+    const expectedSrc = getNarrationSrc(lang);
+    if (!narrationAudio.src.endsWith(expectedSrc)) {
+      const wasPlaying = !narrationAudio.paused;
+      narrationAudio.src = expectedSrc;
       narrationAudio.load();
-      setAudioState(false);
-      updateAudioProgress();
+      if (wasPlaying) {
+        playNarration();
+      } else {
+        setAudioState(false);
+        updateAudioProgress();
+      }
     }
 
     localStorage.setItem('site-language', lang);

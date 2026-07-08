@@ -310,20 +310,19 @@ h3 {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   min-height: inherit;
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  grid-template-columns: 1fr 1fr;
   align-items: stretch;
-  gap: 2rem;
 }
 
 .hero-copy {
   width: 100%;
   max-width: none;
-  padding: 6rem 0;
+  padding: 6rem 2rem 6rem max(1.5rem, calc((100vw - 1180px) / 2 + 1.5rem)); /* Align text with 1180px container */
   display: flex;
   flex-direction: column;
   justify-content: center;

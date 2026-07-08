@@ -70,7 +70,7 @@ h3 {
   font-size: 0.78rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--bronze);
+  color: var(--forest); /* Changed from bronze to forest for higher contrast */
   margin-bottom: 0.9rem;
 }
 
@@ -400,7 +400,7 @@ h3 {
 }
 
 .hero-copy .lead {
-  color: rgba(255, 255, 255, 0.85); /* Light text on dark background */
+  color: var(--white); /* Solid white text for 100% readability */
   max-width: 50ch;
   margin-bottom: 2.2rem;
   font-size: clamp(0.95rem, 1.2vw, 1.05rem);
@@ -769,7 +769,7 @@ h3 {
   width: 100%;
   padding: 4.2rem 0 6rem;
   background: var(--smoke);
-  color: var(--ink);
+  color: var(--ink); /* Changed to dark brown to prevent white text on cream */
   overflow: hidden;
 }
 
@@ -811,18 +811,7 @@ h3 {
 
 /* Top/bottom marquee using DOM images (reliable sizing and spacing) */
 .timeline-marquee {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 56px;
-  pointer-events: none;
-  z-index: 4;
-  /* Warm bronze/yellow similar to image border, slightly transparent */
-  background-color: rgba(52, 131, 79, 0.12);
-  display: flex;
-  align-items: center;
-  padding: 0 12px; /* move track padding to container so track width math is stable */
-  overflow: hidden;
+  display: none;
 }
 
 .timeline-marquee.marquee-top { top: 0; border-bottom: 1px solid rgba(199,165,103,0.16); }
@@ -944,7 +933,7 @@ h3 {
   font-weight: 700;
   font-size: 0.9rem;
   letter-spacing: 0.05em;
-  color: var(--bronze-light);
+  color: var(--wood); /* Rich bronze/wood color instead of gold */
   border-bottom: 2px solid var(--bronze);
   padding-bottom: 0.3rem;
   margin-bottom: 1rem;
@@ -962,9 +951,9 @@ h3 {
 
 .timeline-item:hover .timeline-content {
   transform: translateY(-4px);
-  border-color: var(--bronze-light);
-  background: rgba(251, 250, 246, 0.06);
-  box-shadow: 0 15px 40px rgba(212, 175, 55, 0.06);
+  border-color: var(--bronze);
+  background: var(--white);
+  box-shadow: var(--shadow-md);
 }
 
 .timeline-content h3 {
@@ -1008,7 +997,7 @@ h3 {
 .values-lead {
   max-width: 62ch;
   margin: 0 auto 3.5rem;
-  color: #D8D2C4;
+  color: var(--ink-soft); /* Darker text for high contrast on cream background */
 }
 
 .stats {
@@ -1025,14 +1014,14 @@ h3 {
   display: block;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  color: var(--bronze-light);
+  color: var(--forest-dark); /* Forest dark for readable numbers on cream background */
   line-height: 1;
   margin-bottom: 0.6rem;
 }
 
 .stat-label {
   font-size: 0.85rem;
-  color: #B9B2A2;
+  color: var(--ink-soft); /* High contrast label text */
 }
 
 .value-cards {

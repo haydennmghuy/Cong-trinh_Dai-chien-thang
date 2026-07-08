@@ -1,28 +1,16 @@
-# KỊCH BẢN THUYẾT MINH ÂM THANH (AUDIO NARRATION SCRIPTS)
+# KỊCH BẢN THUYẾT MINH THỰC TẾ TỪ PHÁT ÂM THANH (ORIGINAL SPOKEN AUDIO SCRIPTS)
 **Công trình:** Tượng đài Chiến thắng Phước Thành (Di tích lịch sử cấp Quốc gia)
 
-Tệp này chứa toàn bộ kịch bản thuyết minh bằng tiếng Việt và tiếng Anh đang được sử dụng làm nguồn phát âm thanh thuyết minh (giọng đọc nữ ElevenLabs) trên website.
+Tệp này chứa toàn bộ kịch bản thuyết minh thực tế khớp **100% với giọng đọc âm thanh (giọng nữ ElevenLabs)** phát ra khi bạn nhấn nút nghe thuyết minh trên website (không phải bản rút gọn hiển thị trên màn hình).
 
 ---
 
-## 1. Kịch bản thuyết minh Tiếng Việt (Vietnamese Script)
+## 1. Kịch bản thuyết minh Tiếng Việt (Giọng đọc thực tế từ Audio)
 
-> **Tượng đài Chiến thắng Phước Thành là công trình tưởng niệm chiến thắng lịch sử diễn ra vào đêm 17 rạng sáng 18 tháng 9 năm 1961.**
->
-> **Trong trận đánh này, quân và dân ta đã bất ngờ tiến công và làm chủ hoàn toàn tỉnh lỵ Phước Thành chỉ sau khoảng một giờ ba mươi phút chiến đấu. Đây là lần đầu tiên lực lượng cách mạng đánh chiếm thành công một tỉnh lỵ của chính quyền Sài Gòn, thu hơn 400 khẩu súng và giải thoát gần 300 tù chính trị.**
->
-> **Chiến thắng Phước Thành đã giáng đòn phủ đầu vào chiến lược "Chiến tranh đặc biệt" của Mỹ, gây chấn động chính quyền Sài Gòn và Chính phủ Mỹ. Tài liệu mật của Lầu Năm Góc cũng đánh giá đây là một trong những trận tiến công khiến Sài Gòn rơi vào khủng hoảng và là dấu mốc báo hiệu sự phá sản của chiến lược này.**
->
-> **Ngày nay, Tượng đài Chiến thắng Phước Thành không chỉ là nơi tưởng nhớ các anh hùng liệt sĩ đã chiến đấu, hy sinh vì độc lập dân tộc mà còn là địa chỉ đỏ giáo dục truyền thống yêu nước và tinh thần đấu tranh bất khuất cho các thế hệ mai sau.**
+> **"Cách đây hơn 60 năm, đêm 17 rạng ngày 18 tháng 9 năm 1961, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội. Chiến thắng ấy là nỗi kinh hoàng của ngụy quân ngụy quyền lúc bấy giờ, là một tin sét đánh đối với Chính phủ Kennedy và Hội đồng An ninh quốc gia Mỹ. Tướng Westmoreland trong hồi ký đã thú nhận: "Mùa thu năm 1961 đã chứng kiến bước đầu tiên họ tạm thời chiếm được tỉnh lỵ Phước Thành." Tài liệu mật Lầu Năm Góc cũng xác nhận: đây là trận tiến công lớn nhất có tác dụng làm cho Sài Gòn nháo nhào. Chiến thắng Phước Thành thực sự là tiếng còi báo hiệu sự phá sản của chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ áp dụng tại Việt Nam giai đoạn 1960-1965."**
 
 ---
 
-## 2. Kịch bản thuyết minh Tiếng Anh (English Script)
+## 2. Kịch bản thuyết minh Tiếng Anh (Giọng đọc thực tế từ Audio)
 
-> **The Phuoc Thanh Victory Monument is a memorial to the historical victory that took place on the night of September 17th to the morning of September 18th, 1961.**
->
-> **In this battle, our armed forces and people launched a surprise attack and completely took control of the Phuoc Thanh provincial capital after only about an hour and thirty minutes of combat. This was the first time the revolutionary forces successfully captured a provincial capital of the Saigon regime, capturing over 400 weapons and liberating nearly 300 political prisoners.**
->
-> **The Phuoc Thanh Victory dealt a decisive preemptive blow to the American "Special War" strategy, causing shockwaves in both the Saigon administration and the US government. The Pentagon Papers also assessed this as one of the offensives that threw Saigon into crisis and a milestone signaling the failure of this strategy.**
->
-> **Today, the Phuoc Thanh Victory Monument is not only a place to commemorate the heroic martyrs who fought and sacrificed for national independence but also a red address to educate future generations on patriotism and the spirit of indomitable struggle.**
+> **"Over sixty years ago, on the night of September 17th to the morning of September 18th, 1961, the revolutionary forces achieved the resounding Phuoc Thanh Victory. This victory was a nightmare for the puppet army and government, a bolt from the blue for the Kennedy administration and the US National Security Council. General Westmoreland admitted in his memoirs: "The autumn of 1961 witnessed the first step when they temporarily captured the Phuoc Thanh provincial capital." The Pentagon Papers also confirmed this was the largest attack that caused panic in Saigon. The Phuoc Thanh Victory truly signaled the bankruptcy of the American imperialists' "Special War" strategy applied in Vietnam during 1960-1965."**

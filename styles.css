@@ -34,7 +34,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 93.75%; /* Scales down all rem font sizes globally by 1 step */
+}
 
 body {
   font-family: var(--font-body);
@@ -649,13 +652,21 @@ h3 {
 
 .narration-media {
   min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 .narration-media img {
   border-radius: var(--radius);
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 3; /* Landscape photo aspect ratio */
+  width: 100%;
+  max-width: 480px; /* Centered and bounded */
+  height: auto;
   object-fit: cover;
   border: 1px solid rgba(173, 135, 72, 0.4);
+  box-shadow: var(--shadow-soft);
 }
 
 .narration-copy h2 {

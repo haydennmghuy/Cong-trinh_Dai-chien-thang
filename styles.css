@@ -34,6 +34,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+p {
+  text-align: justify; /* Justify align all paragraph texts globally */
+}
+
 html {
   scroll-behavior: smooth;
   font-size: 93.75%; /* Scales down all rem font sizes globally by 1 step */
@@ -145,10 +149,9 @@ h3 {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(92, 76, 67, 0);
+  background: #5C4C43; /* Solid dark brown, constantly prominent */
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid transparent;
-  transition: background 0.35s ease, border-color 0.35s ease;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.16);
   color: var(--white);
 }
 
@@ -226,72 +229,7 @@ h3 {
   border-color: var(--white);
 }
 
-/* 2. Light header style on scroll (dark text on light cream background) */
-.site-header.header-light {
-  background: rgba(255, 251, 240, 0.95);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  color: var(--ink);
-}
-.site-header.header-light .brand-mark {
-  border-color: var(--bronze);
-  color: var(--bronze);
-}
-.site-header.header-light .brand-name {
-  color: var(--forest-dark);
-}
-.site-header.header-light .brand-name small {
-  color: var(--forest);
-}
-.site-header.header-light .main-nav a {
-  color: var(--ink-soft);
-}
-.site-header.header-light .main-nav a:hover {
-  color: var(--forest-dark);
-}
-.site-header.header-light .main-nav a::after {
-  background: var(--bronze);
-}
-.site-header.header-light .lang-toggle {
-  background: rgba(249, 246, 240, 0.85);
-  border-color: rgba(212, 175, 55, 0.25);
-  color: var(--forest-dark);
-}
-
 /* 3. Dark header style on scroll/footer (white text on dark brown background) */
-.site-header.header-dark,
-.site-header.header-footer {
-  background: rgba(78, 38, 22, 0.98); /* Dinh Tinh Truong dark brown */
-  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  color: var(--white);
-}
-.site-header.header-dark .brand-mark,
-.site-header.header-footer .brand-mark {
-  border-color: var(--bronze-light);
-  color: var(--bronze-light);
-}
-.site-header.header-dark .brand-name,
-.site-header.header-footer .brand-name {
-  color: var(--white);
-}
-.site-header.header-dark .brand-name small,
-.site-header.header-footer .brand-name small {
-  color: var(--smoke-warm);
-}
-.site-header.header-dark .main-nav a,
-.site-header.header-footer .main-nav a {
-  color: rgba(255, 255, 255, 0.85);
-}
-.site-header.header-dark .main-nav a:hover,
-.site-header.header-footer .main-nav a:hover {
-  color: var(--white);
-}
-.site-header.header-dark .lang-toggle,
-.site-header.header-footer .lang-toggle {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
-  color: var(--white);
-}
-
 .header-inner {
   max-width: 1180px;
   margin: 0 auto;

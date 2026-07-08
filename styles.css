@@ -137,42 +137,18 @@ h3 {
    HEADER
    ===================================================================== */
 
+/* 1. Default site-header styles (transparent with white text on dark hero background) */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(92, 76, 67, 0); /* transparent on hero */
+  background: rgba(92, 76, 67, 0);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid transparent;
   transition: background 0.35s ease, border-color 0.35s ease;
-  color: var(--white); /* White text on hero */
-}
-
-/* Ensure default transparent header text/buttons are white on load over dark hero */
-.site-header:not(.header-light) .brand-name {
-  color: var(--white);
-}
-.site-header:not(.header-light) .brand-name small {
-  color: var(--smoke-warm);
-}
-.site-header:not(.header-light) .brand-mark {
-  border-color: var(--bronze-light);
-  color: var(--bronze-light);
-}
-.site-header:not(.header-light) .main-nav a {
-  color: rgba(255, 255, 255, 0.85);
-}
-.site-header:not(.header-light) .main-nav a:hover {
-  color: var(--white);
-}
-.site-header:not(.header-light) .lang-toggle {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
   color: var(--white);
 }
 
-
-/* Default brand logo / links on dark hero */
 .brand-mark {
   width: 42px;
   height: 42px;
@@ -184,13 +160,16 @@ h3 {
   font-family: var(--font-display);
   font-size: 1rem;
   color: var(--bronze-light);
+  transition: border-color 0.35s ease, color 0.35s ease;
 }
+
 .brand-name {
   font-family: var(--font-display);
   font-size: 1.05rem;
   letter-spacing: 0.08em;
   line-height: 1.1;
   color: var(--white);
+  transition: color 0.35s ease;
 }
 .brand-name small {
   font-family: var(--font-serif);
@@ -198,7 +177,9 @@ h3 {
   font-weight: 400;
   letter-spacing: 0.02em;
   color: var(--smoke-warm);
+  transition: color 0.35s ease;
 }
+
 .main-nav a {
   font-family: var(--font-heading);
   font-weight: 500;
@@ -242,9 +223,9 @@ h3 {
   border-color: var(--white);
 }
 
-/* Light header on scroll (light sections) */
+/* 2. Light header style on scroll (dark text on light cream background) */
 .site-header.header-light {
-  background: rgba(255, 251, 240, 0.95); /* var(--smoke) with alpha */
+  background: rgba(255, 251, 240, 0.95);
   border-bottom: 1px solid rgba(201, 168, 76, 0.15);
   color: var(--ink);
 }
@@ -256,7 +237,7 @@ h3 {
   color: var(--forest-dark);
 }
 .site-header.header-light .brand-name small {
-  color: var(--wood);
+  color: var(--forest);
 }
 .site-header.header-light .main-nav a {
   color: var(--ink-soft);
@@ -273,14 +254,12 @@ h3 {
   color: var(--forest-dark);
 }
 
-/* Header on dark sections (like footer) */
+/* 3. Dark header style on scroll/footer (white text on dark brown background) */
 .site-header.header-dark,
 .site-header.header-footer {
-  background: var(--forest-dark); /* Dinh Tinh Truong dark brown */
-  color: var(--smoke);
-  padding: 5.5rem 1.5rem 2rem;
-  position: relative;
-  overflow: hidden;
+  background: rgba(78, 38, 22, 0.98); /* Dinh Tinh Truong dark brown */
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  color: var(--white);
 }
 .site-header.header-dark .brand-mark,
 .site-header.header-footer .brand-mark {
@@ -344,7 +323,7 @@ h3 {
 }
 
 /* =====================================================================
-   SECTION 1 — HERO / TRANG CHỦ / TRANG CHỦ
+   SECTION 1 — HERO / TRANG CHỦ / TRANG CHỦ / TRANG CHỦ
    ===================================================================== */
 
 .hero {
@@ -509,7 +488,7 @@ h3 {
 }
 
 .model3d-copy p {
-  color: rgba(251, 250, 246, 0.8);
+  color: var(--ink-soft); /* High contrast dark sepia instead of light grey */
   font-size: 1.05rem;
   line-height: 1.8;
 }
@@ -688,7 +667,7 @@ h3 {
 }
 
 .narration-copy p {
-  color: #D8D2C4;
+  color: var(--ink-soft); /* High contrast dark sepia instead of light grey */
   max-width: 58ch;
 }
 
@@ -987,7 +966,7 @@ h3 {
 }
 
 .timeline-content p {
-  color: rgba(251, 250, 246, 0.85);
+  color: var(--ink-soft); /* High contrast dark sepia instead of light grey */
   font-size: 0.98rem;
   line-height: 1.7;
 }
@@ -1084,7 +1063,7 @@ h3 {
 }
 
 .value-card p {
-  color: #C7C0B0;
+  color: var(--ink-soft); /* High contrast dark sepia instead of light grey */
   font-size: 0.92rem;
 }
 

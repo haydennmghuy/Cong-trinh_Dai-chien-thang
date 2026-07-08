@@ -440,7 +440,7 @@
       'nav.history': 'Lịch sử',
       'nav.values': 'Giá trị',
       'hero.eyebrow': 'Di tích lịch sử – Huyện Phú Giáo, Bình Dương',
-      'hero.title': 'TƯỢNG ĐÀI CHIẾN THẮNG PHƯỚC THÀNH',
+      'hero.title': 'TƯỢNG ĐÀI CHIẾN THẮNG<br><span class="hero-title-sub">PHƯỚC THÀNH</span>',
       'hero.subtitle': 'Mốc son chói lọi – Đòn phủ đầu chiến lược "Chiến tranh đặc biệt"',
       'hero.lead': 'Đêm 17 rạng ngày 18 tháng 9 năm 1961, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội – lần đầu tiên lực lượng vũ trang cách mạng tiến công và xóa sổ hoàn toàn một tỉnh lỵ của chính quyền Sài Gòn, báo hiệu sự phá sản của chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ.',
       'hero.cta': 'Khám phá ngay',
@@ -487,7 +487,7 @@
       'nav.history': 'History',
       'nav.values': 'Values',
       'hero.eyebrow': 'Historical Site – Phu Giao District, Binh Duong Province',
-      'hero.title': 'PHUOC THANH VICTORY MONUMENT',
+      'hero.title': 'VICTORY MONUMENT<br><span class="hero-title-sub">PHUOC THANH</span>',
       'hero.subtitle': 'A glorious milestone – The decisive blow against the "Special War" strategy',
       'hero.lead': 'On the night of September 17th to the morning of September 18th, 1961, our armed forces achieved the resounding Phuoc Thanh Victory – the first time revolutionary forces attacked and completely destroyed a provincial capital of the Saigon regime, heralding the failure of the American imperialists\' "Special War" strategy.',
       'hero.cta': 'Explore now',
@@ -541,7 +541,8 @@
     document.querySelectorAll('[data-i18n-key]').forEach((element) => {
       const value = getTranslation(lang, element.getAttribute('data-i18n-key'));
       if (value) {
-        if (element.getAttribute('data-i18n-key') === 'footer.copyright') {
+        const key = element.getAttribute('data-i18n-key');
+        if (key === 'footer.copyright' || key === 'hero.title') {
           element.innerHTML = value;
         } else {
           element.textContent = value;

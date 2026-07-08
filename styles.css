@@ -315,8 +315,10 @@ h3 {
   overflow: hidden;
   min-height: min(88vh, 820px);
   background:
-    linear-gradient(95deg, rgba(17, 53, 37, 0.9) 0%, rgba(17, 53, 37, 0.6) 38%, rgba(17, 53, 37, 0.3) 100%),
-    url("Ảnh/hero_background.png") center/cover no-repeat;
+    linear-gradient(90deg, rgba(17, 53, 37, 0.95) 0%, rgba(17, 53, 37, 0.7) 45%, rgba(17, 53, 37, 0.15) 100%),
+    url("Ảnh/hero_background.png") no-repeat;
+  background-size: 135%;
+  background-position: right 62% center;
   color: var(--white);
 }
 
@@ -354,9 +356,18 @@ h3 {
 
 .hero-copy h1 {
   color: var(--white);
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
-  line-height: 1.02;
-  margin-bottom: 1.1rem;
+  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  line-height: 1.25; /* Increased to prevent overlap */
+  letter-spacing: 0.03em; /* Spaced out for clarity */
+  margin-bottom: 1.3rem;
+}
+
+.hero-title-sub {
+  display: block;
+  color: var(--bronze-light); /* Make Phước Thành stand out in gold */
+  font-size: 1.15em;
+  margin-top: 0.2rem;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-copy .eyebrow {
@@ -1193,19 +1204,24 @@ h3 {
 
   /* ── Hero ── */
   .hero {
-    min-height: 70vh;
-    background-position: center 32%;
+    min-height: 75vh;
+    background:
+      linear-gradient(180deg, rgba(17, 53, 37, 0.92) 0%, rgba(17, 53, 37, 0.85) 65%, rgba(17, 53, 37, 0.5) 100%),
+      url("Ảnh/hero_background.png") no-repeat;
+    background-size: cover;
+    background-position: center 30%;
   }
   .hero-inner {
-    padding: 3rem 1rem 3rem;
+    padding: 3.5rem 1rem 3.5rem;
     align-items: flex-start;
   }
   .hero-copy {
     text-align: left;
   }
   .hero-copy h1 {
-    font-size: clamp(1.6rem, 6vw, 2rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.6rem, 6vw, 2.2rem);
+    line-height: 1.25; /* Match desktop line-height */
+    margin-bottom: 0.7rem;
   }
   .hero-copy .subtitle {
     font-size: clamp(1rem, 3.5vw, 1.2rem);

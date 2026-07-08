@@ -41,10 +41,10 @@ function downloadUrl(url, outputPath) {
   });
 }
 
-async function generateEdgeChunk(voice, format, text, outputPath) {
+async function generateEdgeChunk(voice, format, text, outputPath, options) {
   const tts = new MsEdgeTTS();
   await tts.setMetadata(voice, format);
-  const { audioStream } = tts.toStream(text);
+  const { audioStream } = tts.toStream(text, options);
   if (!audioStream) throw new Error("No stream");
   const writable = fs.createWriteStream(outputPath);
   return new Promise((resolve, reject) => {
@@ -100,13 +100,15 @@ async function generateAudio() {
   const tasks = [
     {
       lang: 'vi',
-      voice: 'vi-VN-NamMinhNeural',
+      voice: 'vi-VN-HoaiMyNeural', // Changed back to premium female voice
+      options: { rate: '-6%' },   // Slow down slightly for a smooth, natural reading
       text: vietnameseText,
       fileName: 'VietnameseVoice.mp3'
     },
     {
       lang: 'en',
-      voice: 'en-US-AriaNeural',
+      voice: 'en-US-AriaNeural',  // Premium female voice
+      options: { rate: '-4%' },   // Slow down slightly
       text: englishText,
       fileName: 'EnglishVoice.mp3'
     }
@@ -125,7 +127,7 @@ async function generateAudio() {
 
       let success = false;
       try {
-        await generateEdgeChunk(t.voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, chunk, tempPath);
+        await generateEdgeChunk(t.voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, chunk, tempPath, t.options);
         const size = fs.statSync(tempPath).size;
         console.log(`  -> SUCCESS (Edge): ${size} bytes`);
         success = true;

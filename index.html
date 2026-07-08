@@ -6,7 +6,7 @@
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Thị trấn Phước Vĩnh, huyện Phú Giáo, tỉnh Bình Dương.">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=1783499617390">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -42,16 +42,13 @@
   <div class="hero-inner">
     <div class="hero-copy">
       <p class="eyebrow" data-i18n-key="hero.eyebrow">Di tích lịch sử – Huyện Phú Giáo, Bình Dương</p>
-      <h1 data-i18n-key="hero.title"><span class="hero-title-main">Tượng đài Chiến thắng</span><br><span class="hero-title-sub">Phước Thành</span></h1>
+      <h1 data-i18n-key="hero.title">TƯỢNG ĐÀI CHIẾN THẮNG PHƯỚC THÀNH</h1>
       <p class="subtitle" data-i18n-key="hero.subtitle">Mốc son chói lọi – Đòn phủ đầu chiến lược "Chiến tranh đặc biệt"</p>
       <p class="lead" data-i18n-key="hero.lead">Đêm 17 rạng ngày 18 tháng 9 năm 1961, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội – lần đầu tiên lực lượng vũ trang cách mạng tiến công và xóa sổ hoàn toàn một tỉnh lỵ của chính quyền Sài Gòn, báo hiệu sự phá sản của chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ.</p>
       <div class="hero-actions">
         <a href="#lich-su" class="btn btn-primary" data-i18n-key="hero.cta">Khám phá ngay</a>
         <button type="button" class="btn btn-outline" id="hero-audio-button" data-i18n-key="hero.secondary">Nghe thuyết minh</button>
       </div>
-    </div>
-    <div class="hero-media">
-      <img src="Ảnh/hero_background.png" alt="Tượng đài Chiến thắng Phước Thành" class="hero-photo">
     </div>
   </div>
 </section>
@@ -389,7 +386,61 @@
     setAudioState(false);
     narrationAudio.currentTime = 0;
     updateAudioProgress();
-        'hero.title': '<span class="hero-title-main">Tượng đài Chiến thắng</span><br><span class="hero-title-sub">Phước Thành</span>',
+  });
+  narrationAudio.addEventListener('pause', () => setAudioState(false));
+  narrationAudio.addEventListener('play', () => setAudioState(true));
+
+  // Seeking / scrubbing support
+  const audioTrackEl = document.querySelector('.audio-track');
+  let isScrubbing = false;
+
+  const seekAt = (clientX) => {
+    if (!audioTrackEl || !narrationAudio.duration) return;
+    const rect = audioTrackEl.getBoundingClientRect();
+    let pct = (clientX - rect.left) / rect.width;
+    pct = Math.max(0, Math.min(1, pct));
+    narrationAudio.currentTime = pct * narrationAudio.duration;
+    updateAudioProgress();
+  };
+
+  if (audioTrackEl) {
+    audioTrackEl.addEventListener('click', (e) => {
+      seekAt(e.clientX);
+    });
+  }
+
+  if (audioKnob) {
+    audioKnob.addEventListener('pointerdown', (e) => {
+      isScrubbing = true;
+      try { audioKnob.setPointerCapture(e.pointerId); } catch (err) {}
+      document.body.style.userSelect = 'none';
+    });
+  }
+
+  document.addEventListener('pointermove', (e) => {
+    if (!isScrubbing) return;
+    seekAt(e.clientX);
+  });
+
+  document.addEventListener('pointerup', (e) => {
+    if (!isScrubbing) return;
+    isScrubbing = false;
+    try { audioKnob.releasePointerCapture && audioKnob.releasePointerCapture(e.pointerId); } catch (err) {}
+    document.body.style.userSelect = '';
+  });
+
+  /* ========================================
+     TRANSLATIONS (VI / EN)
+     ======================================== */
+  const translations = {
+    vi: {
+      'nav.home': 'Trang chủ',
+      'nav.model3d': 'Mô hình 3D',
+      'nav.narration': 'Thuyết minh',
+      'nav.history': 'Lịch sử',
+      'nav.values': 'Giá trị',
+      'hero.eyebrow': 'Di tích lịch sử – Huyện Phú Giáo, Bình Dương',
+      'hero.title': '<span class="hero-title-main">Tượng đài Chiến thắng</span><br><span class="hero-title-sub">Phước Thành</span>',
       'hero.subtitle': 'Mốc son chói lọi – Đòn phủ đầu chiến lược "Chiến tranh đặc biệt"',
       'hero.lead': 'Đêm 17 rạng ngày 18 tháng 9 năm 1961, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội – lần đầu tiên lực lượng vũ trang cách mạng tiến công và xóa sổ hoàn toàn một tỉnh lỵ của chính quyền Sài Gòn, báo hiệu sự phá sản của chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ.',
       'hero.cta': 'Khám phá ngay',
@@ -404,39 +455,11 @@
       'timeline.item1.title': 'Thành lập tỉnh Phước Thành',
       'timeline.item1.body': 'Ngô Đình Diệm ban hành Sắc lệnh 143/NV thành lập tỉnh Phước Thành gồm ba quận Tân Uyên, Hiếu Liêm và Phú Giáo, trung tâm tỉnh lỵ đặt tại Phước Vĩnh, nhằm xây dựng hệ thống cứ điểm bao vây chia cắt Chiến khu Đ.',
       'timeline.item2.title': 'Phong trào Đồng Khởi',
-      'timeline.item2.body': 'Dưới sự lãnh đạo của Đảng, nhân dân miền Nam phát động cuộc Đồng Khởi rộng lớn, đập tam bộ máy kìm kẹp của Mỹ-ngụy ở cơ sở. Mỹ triển khai chiến lược "Chiến tranh đặc biệt" với tham vọng bình định miền Nam trong 18 tháng.',
+      'timeline.item2.body': 'Dưới sự lãnh đạo của Đảng, nhân dân miền Nam phát động cuộc Đồng Khởi rộng lớn, đập tan bộ máy kìm kẹp của Mỹ-ngụy ở cơ sở. Mỹ triển khai chiến lược "Chiến tranh đặc biệt" với tham vọng bình định miền Nam trong 18 tháng.',
       'timeline.item3.title': 'Chiến thắng Phước Thành',
       'timeline.item3.body': 'Sau 1 giờ 30 phút chiến đấu oanh liệt, Tiểu đoàn 800 cùng lực lượng địa phương đã tiêu diệt và làm tan rã hoàn toàn gần 2.000 quân địch, thu trên 400 súng, giải thoát gần 300 tù chính trị, xóa sổ toàn bộ Tiểu khu Phước Thành.',
       'timeline.item4.title': 'Mở rộng vùng giải phóng',
       'timeline.item4.body': 'Phát huy chiến thắng, 10 đồn bót địch hốt hoảng bỏ chạy. Các tuyến đường lên Phước Long và các huyện nam Chiến khu Đ được giải phóng hầu hết. Căn cứ Miền Đông được mở rộng và hình thành vững chắc.',
-      'values.heading': 'GIÁ TRỊ LỊCH SỬ',
-      'values.lead': 'Chiến thắng Phước Thành là sự kết hợp đúng đắn đường lối chính trị, quân sự sáng tạo của Đảng, là kết tinh của tài trí và tinh thần chiến đấu dũng cảm ngoan cường của các lực lượng vũ trang cách mạng. Mãi mãi là niềm tự hào của quân và dân cả nước.',
-      'values.stat1': 'Năm chiến thắng vang dội',
-      'values.stat2': 'Năm khởi công xây dựng tượng đài',
-      'values.stat3': 'Chiều cao tượng đài đá hoa cương',
-      'values.stat4': 'm² diện tích khuôn viên',
-      'values.card1.title': 'Ý nghĩa lịch sử',
-      'values.card1.body': 'Lần đầu tiên lực lượng vũ trang cách mạng đánh chiếm một tỉnh lỵ, đập tan bộ máy kìm kẹp cấp tỉnh, đánh đòn phủ đầu chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ.',
-      'values.card2.title': 'Giá trị nghệ thuật',
-      'values.card2.body': 'Tượng đài bằng đá hoa cương uy nghiêm, cao 13 mét, biểu tượng cho ý chí kiên cường và tinh thần chiến đấu bất khuất của quân và dân miền Đông Nam Bộ.',
-      'values.card3.title': 'Giá trị giáo dục',
-      'values.card3.body': 'Nơi sinh hoạt truyền thống lý tưởng, giáo dục tinh thần yêu nước, bồi dưỡng lòng tự hào dân tộc cho thế hệ trẻ huyện Phú Giáo và cả tỉnh Bình Dương.',
-      'values.card4.title': 'Giá trị văn hóa',
-      'values.card4.body': 'Chiến thắng Phước Thành là kết tinh sức mạnh truyền thống, là đóng góp quan trọng tô điểm thêm truyền thống cách mạng anh hùng của dân tộc ta. Mãi mãi là niềm tự hào của quân và dân cả nước.',
-      'footer.about': 'Tượng đài Chiến thắng Phước Thành tọa lạc tại thị trấn Phước Vĩnh, huyện Phú Giáo, tỉnh Bình Dương – nơi ghi dấu chiến thắng lịch sử vang dội ngày 18/9/1961, đòn phủ đầu chiến lược "Chiến tranh đặc biệt" của đế quốc Mỹ.',
-      'footer.explore': 'Khám phá',
-      'footer.info': 'Thông tin',
-      'footer.map': 'Bản đồ',
-      'footer.copyright': 'Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành<br>Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số<br>Chiến dịch Tình nguyện Sinh viên Kinh tế 2026'
-    },
-    en: {
-      'nav.home': 'Home',
-      'nav.model3d': '3D Model',
-      'nav.narration': 'Narration',
-      'nav.history': 'History',
-      'nav.values': 'Values',
-      'hero.eyebrow': 'Historical Site – Phu Giao District, Binh Duong Province',
-      'hero.title': '<span class="hero-title-main">Victory Monument</span><br><span class="hero-title-sub">Phuoc Thanh</span>',��n khu Đ được giải phóng hầu hết. Căn cứ Miền Đông được mở rộng và hình thành vững chắc.',
       'values.heading': 'GIÁ TRỊ LỊCH SỬ',
       'values.lead': 'Chiến thắng Phước Thành là sự kết hợp đúng đắn đường lối chính trị, quân sự sáng tạo của Đảng, là kết tinh của tài trí và tinh thần chiến đấu dũng cảm ngoan cường của các lực lượng vũ trang cách mạng. Mãi mãi là niềm tự hào của quân và dân cả nước.',
       'values.stat1': 'Năm chiến thắng vang dội',
@@ -536,7 +559,7 @@
     const expectedSrc = getNarrationSrc(lang);
     if (!narrationAudio.src.endsWith(expectedSrc)) {
       const wasPlaying = !narrationAudio.paused;
-      narrationAudio.src = expectedSrc;
+      narrationAudio.src = expectedSrc + '?v=4';
       narrationAudio.load();
       if (wasPlaying) {
         playNarration();

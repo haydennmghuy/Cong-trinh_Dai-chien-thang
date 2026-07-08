@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Vietnamese text
 const vietnameseText = `Cách đây hơn sáu mươi năm, đêm mười bảy rạng ngày mười tám tháng chín năm một ngàn chín trăm sáu mươi mốt, quân và dân ta đã làm nên chiến thắng Phước Thành vang dội. Chiến thắng đó là nỗi kinh hoàng của ngụy quân ngụy quyền lúc bấy giờ, là một tin sét đánh đối với Chính phủ Ken nơ đi và Hội đồng An ninh quốc gia Mỹ.
 
 Tướng Oét mo len trong hồi ký Một quân nhân tường trình đã thú nhận: Mùa thu năm một ngàn chín trăm sáu mươi mốt đã chứng kiến một bước đầu tiên họ tạm thời chiếm được tỉnh lỵ Phước Thành. Tài liệu mật Lầu Năm Góc của Mỹ cũng xác nhận: Trận tiến công lớn nhất có tác dụng làm cho Sài Gòn nhốn nháo.
@@ -15,7 +14,6 @@ Trận đánh bắt đầu lúc một giờ đêm mười bảy rạng ngày mư
 
 Chiến thắng Phước Thành thực sự là tiếng còi báo hiệu sự phá sản của chiến lược Chiến tranh đặc biệt của đế quốc Mỹ áp dụng tại Việt Nam. Chiến thắng này mãi mãi là niềm tự hào của quân và dân cả nước.`;
 
-// English text
 const englishText = `Over sixty years ago, on the night of September 17th to the morning of September 18th, 1961, our armed forces achieved the resounding Phuoc Thanh Victory. This victory was a nightmare for the puppet army and government, a bolt from the blue for the Kennedy administration and the US National Security Council.
 
 General Westmoreland admitted in his memoirs: "The autumn of 1961 witnessed the first step when they temporarily captured the Phuoc Thanh provincial capital." The Pentagon Papers also confirmed this was the largest attack that caused panic in Saigon.
@@ -26,13 +24,12 @@ The battle began at 1 AM on the night of September 17th to the morning of Septem
 
 The Phuoc Thanh Victory truly signaled the bankruptcy of the American imperialists' "Special War" strategy applied in Vietnam. This victory remains a source of everlasting pride for the people of the entire nation.`;
 
-// Helper to download from URL
 function downloadUrl(url, outputPath) {
   return new Promise((resolve, reject) => {
     const file = fs.createWriteStream(outputPath);
     https.get(url, (res) => {
       if (res.statusCode !== 200) {
-        reject(new Error(`Failed to download: Status Code ${res.statusCode}`));
+        reject(new Error(`Status ${res.statusCode}`));
         return;
       }
       res.pipe(file);
@@ -40,94 +37,104 @@ function downloadUrl(url, outputPath) {
         file.close();
         resolve(outputPath);
       });
-    }).on('error', (err) => {
-      reject(err);
-    });
+    }).on('error', reject);
   });
 }
 
-// Generate a chunk with Edge TTS
 async function generateEdgeChunk(voice, format, text, outputPath) {
   const tts = new MsEdgeTTS();
   await tts.setMetadata(voice, format);
   const { audioStream } = tts.toStream(text);
-  if (!audioStream) {
-    throw new Error("No audioStream returned");
-  }
+  if (!audioStream) throw new Error("No stream");
   const writable = fs.createWriteStream(outputPath);
   return new Promise((resolve, reject) => {
     let bytes = 0;
-    audioStream.on('data', (c) => {
+    audioStream.on('data', c => {
       bytes += c.length;
       writable.write(c);
     });
     audioStream.on('end', () => {
       writable.end(() => {
-        if (bytes === 0) {
-          reject(new Error("Zero bytes written"));
-        } else {
-          resolve(outputPath);
-        }
+        if (bytes === 0) reject(new Error("0 bytes"));
+        else resolve(outputPath);
       });
     });
-    audioStream.on('error', (err) => {
+    audioStream.on('error', err => {
       writable.end();
       reject(err);
     });
   });
 }
 
-// Main generation function
+function splitTextIntoShortChunks(text) {
+  const sentences = text.match(/[^.!?]+[.!?]*/g) || [text];
+  const chunks = [];
+  
+  for (let s of sentences) {
+    s = s.trim();
+    if (!s) continue;
+    
+    if (s.length <= 150) {
+      chunks.push(s);
+    } else {
+      const parts = s.split(/([,;:]\s*)/);
+      let current = '';
+      for (const p of parts) {
+        if ((current + p).length <= 150) {
+          current += p;
+        } else {
+          if (current.trim()) chunks.push(current.trim());
+          current = p;
+        }
+      }
+      if (current.trim()) chunks.push(current.trim());
+    }
+  }
+  return chunks;
+}
+
 async function generateAudio() {
   const voiceDir = path.join(__dirname, 'Voice');
-  if (!fs.existsSync(voiceDir)) {
-    fs.mkdirSync(voiceDir, { recursive: true });
-  }
+  if (!fs.existsSync(voiceDir)) fs.mkdirSync(voiceDir, { recursive: true });
 
-  // Define language tasks
   const tasks = [
     {
       lang: 'vi',
-      voice: 'vi-VN-HoaiMyNeural',
-      format: OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3,
+      voice: 'vi-VN-NamMinhNeural',
       text: vietnameseText,
       fileName: 'VietnameseVoice.mp3'
     },
     {
       lang: 'en',
       voice: 'en-US-AriaNeural',
-      format: OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3,
       text: englishText,
       fileName: 'EnglishVoice.mp3'
     }
   ];
 
   for (const t of tasks) {
-    console.log(`\n=== Generating ${t.fileName} (${t.lang.toUpperCase()}) ===`);
-    const chunks = t.text.split('\n\n').filter(c => c.trim());
+    console.log(`\n=== Generating ${t.fileName} ===`);
+    const chunks = splitTextIntoShortChunks(t.text);
+    console.log(`Split into ${chunks.length} chunks.`);
     const tempFiles = [];
 
     for (let i = 0; i < chunks.length; i++) {
-      const chunk = chunks[i].trim();
+      const chunk = chunks[i];
       const tempPath = path.join(voiceDir, `_temp_${t.lang}_${i}.mp3`);
-      console.log(`Chunk ${i+1}/${chunks.length} (${chunk.length} chars)...`);
+      console.log(`Chunk ${i+1}/${chunks.length} (${chunk.length} chars): "${chunk.substring(0, 30)}..."`);
 
-      // Try Edge TTS first
       let success = false;
       try {
-        console.log(`  Trying Edge Neural TTS (${t.voice})...`);
-        await generateEdgeChunk(t.voice, t.format, chunk, tempPath);
+        await generateEdgeChunk(t.voice, OUTPUT_FORMAT.AUDIO_24KHZ_96KBITRATE_MONO_MP3, chunk, tempPath);
         const size = fs.statSync(tempPath).size;
         console.log(`  -> SUCCESS (Edge): ${size} bytes`);
         success = true;
       } catch (err) {
-        console.log(`  -> FAILED (Edge): ${err.message}`);
+        console.log(`  -> Edge Failed: ${err.message}`);
       }
 
-      // Fallback to Google Translate TTS
       if (!success) {
         try {
-          console.log(`  Falling back to Google Translate TTS (${t.lang})...`);
           const url = googleTTS.getAudioUrl(chunk, {
             lang: t.lang,
             slow: false,
@@ -135,39 +142,31 @@ async function generateAudio() {
           });
           await downloadUrl(url, tempPath);
           const size = fs.statSync(tempPath).size;
-          console.log(`  -> SUCCESS (Google): ${size} bytes`);
+          console.log(`  -> SUCCESS (Google Fallback): ${size} bytes`);
           success = true;
         } catch (err) {
-          console.error(`  -> FATAL: Google fallback failed: ${err.message}`);
+          console.error(`  -> FATAL (Google Fallback Failed): ${err.message}`);
         }
       }
 
       if (success) {
         tempFiles.push(tempPath);
       }
-
-      // Delay to prevent rate-limiting
-      await new Promise(r => setTimeout(r, 1500));
+      await new Promise(r => setTimeout(r, 1200));
     }
 
-    // Combine chunks
     if (tempFiles.length === chunks.length) {
       const finalPath = path.join(voiceDir, t.fileName);
-      console.log(`Combining all chunks into ${t.fileName}...`);
       const buffers = tempFiles.map(file => fs.readFileSync(file));
       fs.writeFileSync(finalPath, Buffer.concat(buffers));
-      
-      // Cleanup temp files
       for (const file of tempFiles) {
         try { fs.unlinkSync(file); } catch (e) {}
       }
       console.log(`Completed ${t.fileName}! Size: ${fs.statSync(finalPath).size} bytes`);
     } else {
-      console.error(`ERROR: Could not generate all chunks for ${t.fileName}`);
+      console.error(`ERROR: Failed to generate all chunks for ${t.fileName}`);
     }
   }
-
-  console.log('\nAll audio generation tasks complete!');
 }
 
 generateAudio().catch(console.error);

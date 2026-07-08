@@ -148,6 +148,30 @@ h3 {
   color: var(--white); /* White text on hero */
 }
 
+/* Ensure default transparent header text/buttons are white on load over dark hero */
+.site-header:not(.header-light) .brand-name {
+  color: var(--white);
+}
+.site-header:not(.header-light) .brand-name small {
+  color: var(--smoke-warm);
+}
+.site-header:not(.header-light) .brand-mark {
+  border-color: var(--bronze-light);
+  color: var(--bronze-light);
+}
+.site-header:not(.header-light) .main-nav a {
+  color: rgba(255, 255, 255, 0.85);
+}
+.site-header:not(.header-light) .main-nav a:hover {
+  color: var(--white);
+}
+.site-header:not(.header-light) .lang-toggle {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--white);
+}
+
+
 /* Default brand logo / links on dark hero */
 .brand-mark {
   width: 42px;
@@ -1240,7 +1264,16 @@ h3 {
   .brand { gap: 0.4rem; }
 
   /* Hide navigation on mobile — logo left, lang-toggle right */
-  .main-nav { display: none; }
+  .main-nav {
+    display: flex;
+    gap: 0.4rem 1rem;
+    justify-content: center;
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+  .main-nav a {
+    font-size: 0.8rem;
+  }
 
   .header-actions {
     margin-left: auto;

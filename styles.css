@@ -283,7 +283,7 @@ h3 {
   min-height: min(88vh, 820px);
   background: url('Ảnh/hero_background.png') no-repeat;
   background-size: cover;
-  background-position: right 12% center; /* Shift monument to the right with breathing room on the edge */
+  background-position: 83% center; /* Shift monument further to the right to frame it in the light space */
   color: var(--white);
 }
 
@@ -294,7 +294,7 @@ h3 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, rgba(18, 14, 11, 0.98) 0%, rgba(18, 14, 11, 0.92) 42%, rgba(18, 14, 11, 0.72) 55%, rgba(18, 14, 11, 0.2) 78%, rgba(18, 14, 11, 0) 100%);
+  background: linear-gradient(to right, rgba(18, 14, 11, 0.98) 0%, rgba(18, 14, 11, 0.90) 38%, rgba(18, 14, 11, 0.65) 50%, rgba(18, 14, 11, 0.15) 72%, rgba(18, 14, 11, 0) 100%);
   z-index: 0;
   pointer-events: none;
 }
@@ -330,6 +330,8 @@ h3 {
 
 .hero-copy {
   width: 100%;
+  max-width: 480px; /* Narrow text block to leave open space on the right for the monument */
+  z-index: 2;
 }
 
 .hero-copy h1 {
@@ -378,7 +380,7 @@ h3 {
   font-size: 0.95rem;
   line-height: 1.7;
   color: #E3D9D2; /* Soft warm gray for premium readability on dark backgrounds */
-  max-width: 580px;
+  max-width: 480px;
   margin-bottom: 2.2rem;
   text-align: justify;
 }

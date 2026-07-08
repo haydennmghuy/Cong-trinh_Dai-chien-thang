@@ -6,17 +6,17 @@
    ===================================================================== */
 
 :root {
-  --forest:        #1C523A; /* Classic French colonial shutter green */
-  --forest-dark:   #113525; /* Deep dark shutter green */
-  --wood:          #5A4232;
-  --wood-light:    #7E624E;
-  --smoke:         #FAF2DC; /* Warm historic French yellow-cream ("Vàng Dinh Tỉnh Trưởng") */
-  --smoke-warm:    #EADFBC; /* Deeper warm sand/ochre */
-  --bronze:        #A3761E; /* Aged bronze */
-  --bronze-light:  #D4AF37; /* Vintage gold */
-  --ink:           #2A221C; /* Soft charcoal for warm contrast */
-  --ink-soft:      #5E5045;
-  --white:         #FCFAF4;
+  --forest:        #6B7C45; /* Dinh Tinh Truong Olive Green */
+  --forest-dark:   #3F4D20; /* Deep Dinh Tinh Truong Green */
+  --wood:          #8B6914;
+  --wood-light:    #A0832A;
+  --smoke:         #FFFBF0; /* Dinh Tinh Truong primary background (Warm Cream White) */
+  --smoke-warm:    #FFF5E1; /* Dinh Tinh Truong secondary background (Cream Yellow) */
+  --bronze:        #C9A84C; /* Accent gold */
+  --bronze-light:  #E8C96A; /* Accent gold light */
+  --ink:           #2C1810; /* Text primary (deep chocolate/charcoal) */
+  --ink-soft:      #6B5744;
+  --white:         #FFFFFF;
 
   --font-display: 'Playfair Display', serif;
   --font-serif:   'Playfair Display', serif;
@@ -314,11 +314,7 @@ h3 {
   position: relative;
   overflow: hidden;
   min-height: min(88vh, 820px);
-  background:
-    linear-gradient(90deg, rgba(250, 242, 220, 0.98) 0%, rgba(250, 242, 220, 0.8) 45%, rgba(250, 242, 220, 0.15) 100%),
-    url("Ảnh/hero_background.png") no-repeat;
-  background-size: 135%;
-  background-position: 78% 30%;
+  background: var(--smoke-warm); /* Clean Dinh Tinh Truong warm cream background */
   color: var(--ink);
 }
 
@@ -346,12 +342,14 @@ h3 {
   margin: 0 auto;
   padding: 6rem 1.5rem 6rem;
   min-height: inherit;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
   align-items: center;
 }
 
 .hero-copy {
-  max-width: 640px;
+  width: 100%;
 }
 
 .hero-copy h1 {
@@ -395,14 +393,14 @@ h3 {
   background: var(--forest);
   border-color: var(--forest);
   color: var(--white);
-  box-shadow: 0 8px 20px rgba(17, 82, 58, 0.25);
+  box-shadow: 0 8px 20px rgba(107, 124, 69, 0.25);
 }
 .hero .btn-primary:hover {
   background: var(--forest-dark);
   border-color: var(--forest-dark);
   color: var(--white);
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(17, 82, 58, 0.4);
+  box-shadow: 0 12px 28px rgba(107, 124, 69, 0.4);
 }
 
 .hero .btn-outline {
@@ -412,9 +410,30 @@ h3 {
 }
 
 .hero .btn-outline:hover {
-  background: rgba(28, 82, 58, 0.08);
+  background: rgba(107, 124, 69, 0.08);
   border-color: var(--forest-dark);
   color: var(--forest-dark);
+}
+
+.hero-media {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-photo {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  transition: transform var(--transition);
+}
+
+.hero-photo:hover {
+  transform: scale(1.02);
 }
 
 
@@ -532,8 +551,8 @@ h3 {
 .placeholder-image {
   width: 100%;
   aspect-ratio: 1.33;
-  background: linear-gradient(135deg, #1C3627 0%, #10221A 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, var(--forest) 0%, var(--forest-dark) 100%);
+  border: 1px solid rgba(201, 168, 76, 0.3);
   outline: 1px solid rgba(212, 175, 55, 0.1);
   outline-offset: 4px;
   display: flex;
@@ -1218,17 +1237,16 @@ h3 {
 
   /* ── Hero ── */
   .hero {
-    min-height: 75vh;
-    background:
-      linear-gradient(180deg, rgba(250, 242, 220, 0.96) 0%, rgba(250, 242, 220, 0.85) 65%, rgba(250, 242, 220, 0.5) 100%),
-      url("Ảnh/hero_background.png") no-repeat;
-    background-size: cover;
-    background-position: center 30%;
+    min-height: auto;
+    background: var(--smoke-warm);
     color: var(--ink);
   }
   .hero-inner {
-    padding: 3.5rem 1rem 3.5rem;
-    align-items: flex-start;
+    padding: 3rem 1rem 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+    align-items: stretch;
   }
   .hero-copy {
     text-align: left;

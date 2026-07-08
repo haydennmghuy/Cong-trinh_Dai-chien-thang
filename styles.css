@@ -246,6 +246,13 @@ h3 {
   align-items: center;
   gap: 0.7rem;
 }
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  text-decoration: none;
+  color: inherit;
+}
 
 .header-actions {
   display: flex;
@@ -259,7 +266,8 @@ h3 {
 .main-nav {
   display: flex;
   gap: 1.2rem 1.8rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* Prevent wrapping of menu links */
+  align-items: center; /* Vertically center links */
   justify-content: flex-end;
 }
 

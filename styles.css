@@ -245,6 +245,7 @@ h3 {
   display: flex;
   align-items: center;
   gap: 0.7rem;
+  flex: 1; /* Allow equal width space on desktop left */
 }
 .brand-link {
   display: flex;
@@ -259,18 +260,17 @@ h3 {
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-right: 0;
-  flex-wrap: nowrap; /* Prevent wrapping to keep elements in a single row */
   justify-content: flex-end;
+  flex: 1; /* Allow equal width space on desktop right to center main-nav perfectly */
 }
 
 .main-nav {
   display: flex;
   gap: 1.2rem 1.8rem;
-  flex-wrap: nowrap; /* Prevent wrapping of menu links */
-  align-items: center; /* Vertically center links */
-  justify-content: flex-end;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center; /* Center links on desktop */
+  flex: 2; /* Center element gets more priority space */
 }
 
 /* =====================================================================
@@ -1151,13 +1151,15 @@ h3 {
   }
   .brand {
     order: 1;
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
   }
   .header-actions {
-    display: contents; /* Promote children to header-inner flex layout */
-  }
-  .lang-toggle {
     order: 2;
-    margin-left: auto;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
   .main-nav {
     order: 3;
@@ -1171,9 +1173,10 @@ h3 {
     overflow-x: auto; /* Horizontal scroll if menu doesn't fit */
     white-space: nowrap;
     -webkit-overflow-scrolling: touch;
+    flex: none;
   }
   .main-nav a {
-    font-size: 0.72rem; /* Reduced font size from 0.8rem to 0.72rem */
+    font-size: 0.72rem; /* Reduced font size to 0.72rem */
     padding: 0.1rem 0.2rem;
   }
 
@@ -1235,12 +1238,13 @@ h3 {
   }
   .brand-mark { width: 32px; height: 32px; font-size: 0.9rem; }
   .brand-name {
-    font-size: 0.8rem;
-    flex-shrink: 1;
-    min-width: 0;
+    font-size: 0.85rem;
+    line-height: 1.1;
   }
   .brand-name small {
-    display: none !important; /* Hide subtitle on mobile to prevent header overflow */
+    display: block !important; /* Show subtitle since we have space on first row */
+    font-size: 0.68rem;
+    line-height: 1.1;
   }
   .brand { gap: 0.4rem; }
 

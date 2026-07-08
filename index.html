@@ -77,11 +77,7 @@
         loading="eager"
         style="width:100%;height:100%;"
       >
-        <div class="model3d-loading" slot="poster">
-          <span>Đang tải mô hình 3D...</span>
-        </div>
       </model-viewer>
-      <div class="model3d-help" data-i18n-key="model3d.help">Kéo để xoay • Cuộn để phóng to</div>
     </div>
   </div>
 </section>
@@ -300,7 +296,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p data-i18n-key="footer.copyright">© Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành. Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số – Chiến dịch Tình nguyện Sinh viên Kinh tế 2026.</p>
+    <p data-i18n-key="footer.copyright">Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành<br>Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số<br>Chiến dịch Tình nguyện Sinh viên Kinh tế 2026</p>
   </div>
 </footer>
 
@@ -482,8 +478,7 @@
       'footer.explore': 'Khám phá',
       'footer.info': 'Thông tin',
       'footer.map': 'Bản đồ',
-      'footer.addressLabel': 'Địa chỉ ',
-      'footer.copyright': '© Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành. Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số – Chiến dịch Tình nguyện Sinh viên Kinh tế 2026.'
+      'footer.copyright': 'Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành<br>Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số<br>Chiến dịch Tình nguyện Sinh viên Kinh tế 2026'
     },
     en: {
       'nav.home': 'Home',
@@ -531,7 +526,7 @@
       'footer.info': 'Information',
       'footer.map': 'Map',
       'footer.addressLabel': 'Address ',
-      'footer.copyright': '© Digital Heritage Project – Phuoc Thanh Victory Monument Historical Site. By the Digital Skills Enhancement Team – Student Economic Volunteer Campaign 2026.'
+      'footer.copyright': 'Digital Red Site Digitalization Project - Phuoc Thanh Victory Monument<br>Carried out by the Digital Skills Enhancement Team<br>Student Economic Volunteer Campaign 2026'
     }
   };
 
@@ -546,7 +541,11 @@
     document.querySelectorAll('[data-i18n-key]').forEach((element) => {
       const value = getTranslation(lang, element.getAttribute('data-i18n-key'));
       if (value) {
-        element.textContent = value;
+        if (element.getAttribute('data-i18n-key') === 'footer.copyright') {
+          element.innerHTML = value;
+        } else {
+          element.textContent = value;
+        }
       }
     });
 

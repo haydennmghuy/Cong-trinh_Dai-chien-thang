@@ -281,12 +281,21 @@ h3 {
   position: relative;
   overflow: hidden;
   min-height: min(88vh, 820px);
-  background: #1C3325; /* Deep forest green base */
-  color: var(--white);
+  background: #9BB5C8; /* Light sky blue base */
+  color: #1E3340;
 }
 
+/* Gray overlay on the left text column */
 .hero::before {
-  display: none; /* No longer needed - using two-column layout */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(55, 65, 75, 0.35); /* Subtle gray tint over the sky blue */
+  z-index: 0;
+  pointer-events: none;
 }
 
 .hero-crack {
@@ -344,7 +353,7 @@ h3 {
 
 .hero-title-sub {
   display: block;
-  color: #c5c9b8; /* Sage/cream on green */
+  color: #1A3040; /* Dark blue-gray */
   font-size: 1.12em;
   margin-top: 0.45rem;
 }
@@ -355,7 +364,7 @@ h3 {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.25em;
-  color: rgba(210, 215, 195, 0.8); /* Muted sage */
+  color: rgba(20, 40, 55, 0.7); /* Dark muted on light bg */
   margin-bottom: 0.9rem;
 }
 
@@ -363,7 +372,7 @@ h3 {
   font-family: var(--font-display);
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   font-style: italic;
-  color: rgba(210, 215, 195, 0.9); /* Sage cream italic */
+  color: #2A4555; /* Dark teal */
   margin-bottom: 1.5rem;
   font-weight: 400;
 }
@@ -372,7 +381,7 @@ h3 {
   font-family: var(--font-body);
   font-size: 0.93rem;
   line-height: 1.75;
-  color: rgba(220, 225, 210, 0.88); /* Sage white for green background */
+  color: #2C3E4A; /* Dark charcoal for readability on light bg */
   max-width: 520px;
   margin-bottom: 2.2rem;
   text-align: justify;
@@ -381,46 +390,46 @@ h3 {
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .hero .btn-primary {
-  background: rgba(30, 55, 40, 0.6);
-  border: 1px solid rgba(200, 210, 190, 0.45);
-  color: var(--white);
+  background: rgba(30, 50, 65, 0.2);
+  border: 1px solid rgba(30, 50, 65, 0.5);
+  color: #1E3340;
   backdrop-filter: blur(4px);
   box-shadow: none;
 }
 .hero .btn-primary:hover {
-  background: rgba(30, 55, 40, 0.85);
-  border-color: rgba(200, 210, 190, 0.7);
-  color: var(--white);
+  background: rgba(30, 50, 65, 0.35);
+  border-color: rgba(30, 50, 65, 0.7);
+  color: #0E2030;
   transform: translateY(-2px);
 }
 
 .hero .btn-outline {
-  border: 1px solid rgba(200, 210, 190, 0.35);
-  color: rgba(220, 225, 210, 0.9);
+  border: 1px solid rgba(30, 50, 65, 0.4);
+  color: #2A4555;
   background: transparent;
 }
 
 .hero .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(200, 210, 190, 0.6);
-  color: var(--white);
+  background: rgba(30, 50, 65, 0.12);
+  border-color: rgba(30, 50, 65, 0.65);
+  color: #1E3340;
 }
 
 .hero-media {
-  display: block !important; /* Show monument image column */
+  display: block !important;
   position: relative;
   overflow: hidden;
 }
 
-/* Gradient overlay on the LEFT edge of the image to blend into the green background */
+/* Wide gradient on the LEFT edge of the image for smooth blending */
 .hero-media::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
-  width: 35%;
+  width: 55%; /* Wide gradient for smooth blending */
   height: 100%;
-  background: linear-gradient(to right, #1C3325 0%, rgba(28, 51, 37, 0.6) 50%, rgba(28, 51, 37, 0) 100%);
+  background: linear-gradient(to right, #9BB5C8 0%, rgba(155, 181, 200, 0.7) 35%, rgba(155, 181, 200, 0.3) 65%, rgba(155, 181, 200, 0) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -1283,7 +1292,7 @@ h3 {
   }
   .hero-media::before {
     width: 100%;
-    background: linear-gradient(to top, #1C3325 0%, rgba(28, 51, 37, 0.4) 50%, rgba(28, 51, 37, 0) 100%) !important;
+    background: linear-gradient(to top, #9BB5C8 0%, rgba(155, 181, 200, 0.4) 50%, rgba(155, 181, 200, 0) 100%) !important;
   }
   .hero-copy {
     padding: 2rem 1.2rem 3rem !important;

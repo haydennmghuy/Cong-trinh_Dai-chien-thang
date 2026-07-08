@@ -6,17 +6,17 @@
    ===================================================================== */
 
 :root {
-  --forest:        #2D251E; /* Deep antique warm sepia instead of green */
-  --forest-dark:   #1A1512; /* Rich warm dark wood/charcoal */
-  --wood:          #5E4E3E;
-  --wood-light:    #806E5D;
-  --smoke:         #F9F6F0; /* Warm ivory cream background ("ngà vàng") */
-  --smoke-warm:    #EAE3D2; /* Deeper warm sand/ivory */
-  --bronze:        #A3761E; /* Historic old gold */
-  --bronze-light:  #D4AF37; /* Bright historic royal gold */
-  --ink:           #2D251E; /* Dark sepia for high contrast text */
-  --ink-soft:      #665C51; /* Medium brown-gray for subtext */
-  --white:         #FCFAF6;
+  --forest:        #1C3627; /* Rich forest green */
+  --forest-dark:   #10221A; /* Deep dark green */
+  --wood:          #5A3825;
+  --wood-light:    #7A4E32;
+  --smoke:         #EFEAE0; /* Traditional warm cream background */
+  --smoke-warm:    #E5DECE;
+  --bronze:        #AD8748;
+  --bronze-light:  #C7A567;
+  --ink:           #221E19;
+  --ink-soft:      #4A443C;
+  --white:         #FBFAF6;
 
   --font-display: 'Playfair Display', serif;
   --font-serif:   'Playfair Display', serif;
@@ -25,7 +25,7 @@
   --font-mono:    'Space Mono', monospace;
 
   --radius: 12px;
-  --shadow-soft: 0 16px 40px rgba(37, 33, 28, 0.08);
+  --shadow-soft: 0 16px 40px rgba(16, 34, 26, 0.15);
   --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --marquee-star-size: 26px;
   --marquee-star-gap: 72px;
@@ -106,7 +106,7 @@ h3 {
   border-color: var(--bronze);
   color: var(--white);
   transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(163, 118, 30, 0.4);
+  box-shadow: 0 12px 28px rgba(199, 165, 103, 0.4);
 }
 
 .btn-outline {
@@ -149,18 +149,18 @@ h3 {
 }
 
 .site-header.header-dark {
-  background: rgba(26, 21, 18, 0.75);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(28, 54, 39, 0.50);
+  border-bottom: 1px solid rgba(173, 135, 72, 0.15);
 }
 
 .site-header.header-light {
-  background: rgba(249, 246, 240, 0.96);
-  border-bottom: 1px solid rgba(163, 118, 30, 0.12);
+  background: rgba(251, 250, 246, 0.95);
+  border-bottom: 1px solid rgba(173, 135, 72, 0.15);
 }
 
 .site-header.header-footer {
-  background: rgba(26, 21, 18, 0.98);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  background: rgba(28, 54, 39, 0.98);
+  border-bottom: 1px solid rgba(173, 135, 72, 0.15);
 }
 
 .header-inner {
@@ -243,7 +243,7 @@ h3 {
 }
 
 .lang-toggle {
-  border: 1.5px solid rgba(163, 118, 30, 0.25);
+  border: 1.5px solid rgba(199, 165, 103, 0.25);
   background: rgba(249, 246, 240, 0.85);
   color: var(--forest-dark);
   padding: 0.45rem 0.85rem;
@@ -315,7 +315,7 @@ h3 {
   overflow: hidden;
   min-height: min(88vh, 820px);
   background:
-    linear-gradient(95deg, rgba(45, 37, 30, 0.9) 0%, rgba(45, 37, 30, 0.65) 38%, rgba(45, 37, 30, 0.3) 100%),
+    linear-gradient(95deg, rgba(16, 34, 26, 0.88) 0%, rgba(16, 34, 26, 0.58) 38%, rgba(16, 34, 26, 0.28) 100%),
     url("Ảnh/hero_background.png") center/cover no-repeat;
   color: var(--white);
 }
@@ -398,7 +398,7 @@ h3 {
    ===================================================================== */
 
 .model3d-section {
-  background: radial-gradient(circle at center, #2F2620 0%, #15110E 100%);
+  background: radial-gradient(circle at center, #152B1E 0%, #0B1710 100%);
   padding: 7rem 1.5rem;
   position: relative;
   overflow: hidden;
@@ -431,7 +431,7 @@ h3 {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  background: radial-gradient(circle, #25201A 0%, #0E0C0A 100%);
+  background: radial-gradient(circle, #132219 0%, #09110B 100%);
   border: 1px solid rgba(212, 175, 55, 0.3);
   border-radius: 12px;
   overflow: hidden;
@@ -507,7 +507,7 @@ h3 {
 .placeholder-image {
   width: 100%;
   aspect-ratio: 1.33;
-  background: linear-gradient(135deg, #241D17 0%, #100C09 100%);
+  background: linear-gradient(135deg, #1C3627 0%, #10221A 100%);
   border: 1px solid rgba(212, 175, 55, 0.3);
   outline: 1px solid rgba(212, 175, 55, 0.1);
   outline-offset: 4px;
@@ -642,7 +642,7 @@ h3 {
   background: var(--bronze);
   color: var(--white);
   transform: scale(1.08);
-  box-shadow: 0 6px 18px rgba(163, 118, 30, 0.4);
+  box-shadow: 0 6px 18px rgba(199, 165, 103, 0.4);
 }
 
 .audio-time {
@@ -719,7 +719,7 @@ h3 {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(45, 37, 30, 0.75);
+  background: rgba(16, 34, 26, 0.72);
   pointer-events: none;
 }
 
@@ -760,7 +760,7 @@ h3 {
   pointer-events: none;
   z-index: 4;
   /* Warm bronze/yellow similar to image border, slightly transparent */
-  background-color: rgba(163, 118, 30, 0.08);
+  background-color: rgba(52, 131, 79, 0.12);
   display: flex;
   align-items: center;
   padding: 0 12px; /* move track padding to container so track width math is stable */
@@ -1009,8 +1009,8 @@ h3 {
    ===================================================================== */
 
 .site-footer {
-  background: linear-gradient(180deg, #1A1512 0%, #0E0B09 100%);
-  color: #EAE3D2;
+  background: linear-gradient(180deg, #04140a 0%, #001207 100%);
+  color: #E7EFE6;
   border-top: 1px solid rgba(212, 175, 55, 0.08);
   box-shadow: inset 0 8px 24px rgba(0,0,0,0.5);
 }

@@ -6,7 +6,7 @@
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Xã Phú Giáo, TP.HCM.">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1783521223898">
+<link rel="stylesheet" href="styles.css?v=1783521573434">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -327,11 +327,23 @@
   };
 
   const playNarration = () => {
+    const expectedSrc = getNarrationSrc(currentLang) + '?v=8'; // Updated to v=8
+    if (!narrationAudio.src || !narrationAudio.src.includes(getNarrationSrc(currentLang))) {
+      narrationAudio.src = expectedSrc;
+      narrationAudio.load();
+    }
     narrationAudio.play().then(() => {
       setAudioState(true);
     }).catch((err) => {
       console.error("Audio playback error:", err);
-      setAudioState(false);
+      // Fallback reload and retry to bypass browser audio locks
+      narrationAudio.load();
+      narrationAudio.play().then(() => {
+        setAudioState(true);
+      }).catch((e) => {
+        console.error("Audio retry failed:", e);
+        setAudioState(false);
+      });
     });
   };
 
@@ -547,9 +559,9 @@
     const expectedSrc = getNarrationSrc(lang);
     if (!narrationAudio.src.includes(expectedSrc)) {
       const wasPlaying = !narrationAudio.paused;
-      narrationAudio.src = expectedSrc + '?v=7';
-      narrationAudio.load();
       if (wasPlaying) {
+        narrationAudio.src = expectedSrc + '?v=8';
+        narrationAudio.load();
         playNarration();
       } else {
         setAudioState(false);

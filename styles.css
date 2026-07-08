@@ -285,17 +285,9 @@ h3 {
   color: #1E3340;
 }
 
-/* Gray overlay on the left text column */
+/* Gray overlay removed */
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 100%;
-  background: rgba(55, 65, 75, 0.35); /* Subtle gray tint over the sky blue */
-  z-index: 0;
-  pointer-events: none;
+  display: none;
 }
 
 .hero-crack {

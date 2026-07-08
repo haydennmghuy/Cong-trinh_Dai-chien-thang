@@ -281,22 +281,12 @@ h3 {
   position: relative;
   overflow: hidden;
   min-height: min(88vh, 820px);
-  background: url('Ảnh/hero_background.png') no-repeat;
-  background-size: cover;
-  background-position: 92% center; /* Push monument to the far right edge */
+  background: #1C3325; /* Deep forest green base */
   color: var(--white);
 }
 
 .hero::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, rgba(18, 14, 11, 0.97) 0%, rgba(18, 14, 11, 0.95) 40%, rgba(18, 14, 11, 0.85) 55%, rgba(18, 14, 11, 0.4) 75%, rgba(18, 14, 11, 0) 100%);
-  z-index: 0;
-  pointer-events: none;
+  display: none; /* No longer needed - using two-column layout */
 }
 
 .hero-crack {
@@ -319,18 +309,22 @@ h3 {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 1180px;
-  margin: 0 auto;
-  padding: 7.5rem 1.5rem;
+  max-width: none;
+  margin: 0;
+  padding: 0;
   min-height: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  align-items: stretch;
 }
 
 .hero-copy {
   width: 100%;
-  max-width: 480px; /* Narrow text block to leave open space on the right for the monument */
+  max-width: none;
+  padding: 7rem 3.5rem 7rem 6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   z-index: 2;
 }
 
@@ -350,18 +344,18 @@ h3 {
 
 .hero-title-sub {
   display: block;
-  color: var(--bronze-light);
+  color: #c5c9b8; /* Sage/cream on green */
   font-size: 1.12em;
-  margin-top: 0.45rem; /* Clean even spacing between lines */
+  margin-top: 0.45rem;
 }
 
 .hero-copy .eyebrow {
   font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--bronze-light);
+  letter-spacing: 0.25em;
+  color: rgba(210, 215, 195, 0.8); /* Muted sage */
   margin-bottom: 0.9rem;
 }
 
@@ -369,18 +363,17 @@ h3 {
   font-family: var(--font-display);
   font-size: clamp(1rem, 2.5vw, 1.3rem);
   font-style: italic;
-  color: var(--bronze-light);
+  color: rgba(210, 215, 195, 0.9); /* Sage cream italic */
   margin-bottom: 1.5rem;
   font-weight: 400;
-  opacity: 0.95;
 }
 
 .hero-copy .lead {
   font-family: var(--font-body);
-  font-size: 0.95rem;
-  line-height: 1.7;
-  color: #E3D9D2; /* Soft warm gray for premium readability on dark backgrounds */
-  max-width: 480px;
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(220, 225, 210, 0.88); /* Sage white for green background */
+  max-width: 520px;
   margin-bottom: 2.2rem;
   text-align: justify;
 }
@@ -388,47 +381,64 @@ h3 {
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
 .hero .btn-primary {
-  background: #B85C4C; /* Terracotta red from Dinh Tinh Truong */
-  border-color: #B85C4C;
+  background: rgba(30, 55, 40, 0.6);
+  border: 1px solid rgba(200, 210, 190, 0.45);
   color: var(--white);
-  box-shadow: 0 8px 20px rgba(184, 92, 76, 0.25);
+  backdrop-filter: blur(4px);
+  box-shadow: none;
 }
 .hero .btn-primary:hover {
-  background: #A04838;
-  border-color: #A04838;
+  background: rgba(30, 55, 40, 0.85);
+  border-color: rgba(200, 210, 190, 0.7);
   color: var(--white);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(184, 92, 76, 0.4);
+  transform: translateY(-2px);
 }
 
 .hero .btn-outline {
-  border-color: rgba(255, 255, 255, 0.4);
-  color: var(--white);
+  border: 1px solid rgba(200, 210, 190, 0.35);
+  color: rgba(220, 225, 210, 0.9);
   background: transparent;
 }
 
 .hero .btn-outline:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(200, 210, 190, 0.6);
   color: var(--white);
 }
 
 .hero-media {
-  display: none !important; /* Hide image column since it is now full-bleed background */
+  display: block !important; /* Show monument image column */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient overlay on the LEFT edge of the image to blend into the green background */
+.hero-media::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(to right, #1C3325 0%, rgba(28, 51, 37, 0.6) 50%, rgba(28, 51, 37, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .hero-photo {
   width: 100%;
-  max-height: 520px;
+  height: 100%;
   object-fit: cover;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-soft);
-  border: 1px solid rgba(201, 168, 76, 0.3);
-  transition: transform var(--transition);
+  object-position: center;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  transition: none;
 }
 
 .hero-photo:hover {
-  transform: scale(1.02);
+  transform: none;
 }
 
 
@@ -1254,19 +1264,33 @@ h3 {
     padding-right: 1rem !important;
   }
 
-  /* ── Hero mobile full-bleed adjustment ── */
+  /* ── Hero mobile two-column → stacked ── */
   .hero {
-    background-position: center center !important; /* Keep background centered on mobile viewports */
-  }
-  .hero::before {
-    background: rgba(18, 14, 11, 0.88) !important; /* Overlay covers entire screen for mobile text contrast */
+    min-height: auto !important;
   }
   .hero-inner {
-    padding: 5.5rem 1rem !important;
-    min-height: 75vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0 !important;
+    min-height: auto !important;
+  }
+  .hero-media {
+    order: -1;
+    width: 100%;
+    height: 45vw;
+    min-height: 200px;
+    max-height: 300px;
+  }
+  .hero-media::before {
+    width: 100%;
+    background: linear-gradient(to top, #1C3325 0%, rgba(28, 51, 37, 0.4) 50%, rgba(28, 51, 37, 0) 100%) !important;
+  }
+  .hero-copy {
+    padding: 2rem 1.2rem 3rem !important;
   }
   .hero-copy .lead {
     text-align: left !important;
+    max-width: none !important;
   }
 
   /* ── Header ── */
@@ -1297,46 +1321,22 @@ h3 {
     border-radius: 999px;
   }
 
-  /* ── Hero ── */
-  .hero {
-    min-height: auto;
-    background: #5C4C43;
-    color: var(--white);
-  }
-  .hero-inner {
-    padding: 3rem 1rem 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2.2rem;
-    align-items: stretch;
-  }
-  .hero-copy {
-    text-align: left;
-  }
+  /* ── Hero (styles inherited from tablet override above) ── */
   .hero-copy h1 {
     font-size: clamp(1.6rem, 6vw, 2.2rem);
-    line-height: 1.25; /* Match desktop line-height */
+    line-height: 1.25;
     margin-bottom: 0.7rem;
   }
   .hero-title-main {
-    white-space: normal; /* Allow wrapping on very small screens to avoid horizontal scroll */
-  }
-  .hero-title-sub {
-    display: block;
-    margin-top: 0.2rem;
-    color: var(--bronze-light);
+    white-space: normal;
   }
   .hero-copy .subtitle {
     font-size: clamp(1rem, 3.5vw, 1.2rem);
     margin-bottom: 0.5rem;
-    color: var(--smoke-warm);
   }
   .hero-copy .lead {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    max-width: 46ch;
+    font-size: 0.93rem;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.85);
   }
 
   /* CTA buttons — stacked, full-width, 48px tall */

@@ -1020,6 +1020,12 @@ h3 {
   line-height: 1;
   margin-bottom: 0.6rem;
 }
+.stat-number small {
+  font-size: 0.55em; /* Make unit smaller than the number */
+  font-weight: 500;
+  margin-left: 2px;
+  vertical-align: baseline;
+}
 
 .stat-label {
   font-size: 0.85rem;

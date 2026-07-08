@@ -497,11 +497,11 @@ h3 {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  background: radial-gradient(circle, #132219 0%, #09110B 100%);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(to bottom, #BCE2FA 0%, #E8F5FD 70%, #FFFDF9 100%); /* Clear daylight sky gradient */
+  border: 1px solid rgba(201, 168, 76, 0.35);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 40px rgba(212, 175, 55, 0.08);
+  box-shadow: var(--shadow-soft);
   padding: 15px;
 }
 

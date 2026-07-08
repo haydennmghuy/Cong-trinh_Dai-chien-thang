@@ -6,16 +6,16 @@
    ===================================================================== */
 
 :root {
-  --forest:        #6B7C45; /* Dinh Tinh Truong Olive Green */
-  --forest-dark:   #3F4D20; /* Deep Dinh Tinh Truong Green */
-  --wood:          #8B6914;
-  --wood-light:    #A0832A;
-  --smoke:         #FFFBF0; /* Dinh Tinh Truong primary background (Warm Cream White) */
-  --smoke-warm:    #FFF5E1; /* Dinh Tinh Truong secondary background (Cream Yellow) */
-  --bronze:        #C9A84C; /* Accent gold */
-  --bronze-light:  #E8C96A; /* Accent gold light */
-  --ink:           #2C1810; /* Text primary (deep chocolate/charcoal) */
-  --ink-soft:      #6B5744;
+  --forest:        #8A5A36; /* Muted Wood Brown (Eyebrows) */
+  --forest-dark:   #4E2616; /* Deep Chocolate Brown (Headings, Stats, Main Brand) */
+  --wood:          #8A5A36; /* Wood Brown */
+  --wood-light:    #A06A42;
+  --smoke:         #FFFBF0; /* Warm Cream background */
+  --smoke-warm:    #FFF5E1; /* Secondary warm cream */
+  --bronze:        #C9A84C;
+  --bronze-light:  #E8C96A;
+  --ink:           #2C1810; /* Dark chocolate primary text */
+  --ink-soft:      #4E4035; /* Warm charcoal/sepia for paragraph body text */
   --white:         #FFFFFF;
 
   --font-display: 'Playfair Display', serif;
@@ -25,12 +25,11 @@
   --font-mono:    'Space Mono', monospace;
 
   --radius: 12px;
-  --shadow-soft: 0 16px 40px rgba(17, 53, 37, 0.15);
+  --shadow-soft: 0 16px 40px rgba(78, 38, 22, 0.08); /* Muted warm brown shadow */
   --transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   --marquee-star-size: 26px;
   --marquee-star-gap: 72px;
   --marquee-stars-per-group: 8;
-  --marquee-group-width: calc(var(--marquee-stars-per-group) * var(--marquee-star-size) + (var(--marquee-stars-per-group) - 1) * var(--marquee-star-gap));
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -70,7 +69,7 @@ h3 {
   font-size: 0.78rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--forest); /* Changed from bronze to forest for higher contrast */
+  color: var(--wood); /* Wood brown for eyebrows */
   margin-bottom: 0.9rem;
 }
 
@@ -988,7 +987,7 @@ h3 {
 }
 
 .values h2 {
-  color: var(--forest-dark);
+  color: var(--forest-dark); /* Deep chocolate brown */
   font-size: clamp(2rem, 3.8vw, 2.8rem);
   font-family: var(--font-display);
   margin-bottom: 1.2rem;
@@ -1014,7 +1013,7 @@ h3 {
   display: block;
   font-family: var(--font-display);
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  color: var(--forest-dark); /* Forest dark for readable numbers on cream background */
+  color: var(--forest-dark); /* Deep chocolate brown */
   line-height: 1;
   margin-bottom: 0.6rem;
 }

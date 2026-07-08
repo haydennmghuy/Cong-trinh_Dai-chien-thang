@@ -550,7 +550,7 @@
     const expectedSrc = getNarrationSrc(lang);
     if (!narrationAudio.src.endsWith(expectedSrc)) {
       const wasPlaying = !narrationAudio.paused;
-      narrationAudio.src = expectedSrc + '?v=5';
+      narrationAudio.src = expectedSrc + '?v=6';
       narrationAudio.load();
       if (wasPlaying) {
         playNarration();

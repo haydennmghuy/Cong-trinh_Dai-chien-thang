@@ -6,7 +6,7 @@
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Xã Phú Giáo, TP.HCM.">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1783522827399">
+<link rel="stylesheet" href="styles.css?v=1783525065318">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -95,7 +95,12 @@
     </div>
     <div class="narration-copy">
       <h2 data-i18n-key="narration.title">THUYẾT MINH DI TÍCH</h2>
-      <p data-i18n-key="narration.body">Tượng đài Chiến thắng Phước Thành là công trình tưởng niệm chiến thắng lịch sử diễn ra vào đêm 17 rạng sáng 18 tháng 9 năm 1961.<br><br>Trong trận đánh này, quân và dân ta đã bất ngờ tiến công và làm chủ hoàn toàn tỉnh lỵ Phước Thành chỉ sau khoảng một giờ ba mươi phút chiến đấu. Đây là lần đầu tiên lực lượng cách mạng đánh chiếm thành công một tỉnh lỵ của chính quyền Sài Gòn, thu hơn 400 khẩu súng và giải thoát gần 300 tù chính trị.<br><br>Chiến thắng Phước Thành đã giáng đòn phủ đầu vào chiến lược "Chiến tranh đặc biệt" của Mỹ, gây chấn động chính quyền Sài Gòn và Chính phủ Mỹ. Tài liệu mật của Lầu Năm Góc cũng đánh giá đây là một trong những trận tiến công khiến Sài Gòn rơi vào khủng hoảng và là dấu mốc báo hiệu sự phá sản của chiến lược này.<br><br>Ngày nay, Tượng đài Chiến thắng Phước Thành không chỉ là nơi tưởng nhớ các anh hùng liệt sĩ đã chiến đấu, hy sinh vì độc lập dân tộc mà còn là địa chỉ đỏ giáo dục truyền thống yêu nước và tinh thần đấu tranh bất khuất cho các thế hệ mai sau.</p>
+      <div class="narration-text" data-i18n-key="narration.body">
+        <p>Tượng đài Chiến thắng Phước Thành là công trình tưởng niệm chiến thắng lịch sử diễn ra vào đêm 17 rạng sáng 18 tháng 9 năm 1961.</p>
+        <p>Trong trận đánh này, quân và dân ta đã bất ngờ tiến công và làm chủ hoàn toàn tỉnh lỵ Phước Thành chỉ sau khoảng một giờ ba mươi phút chiến đấu. Đây là lần đầu tiên lực lượng cách mạng đánh chiếm thành công một tỉnh lỵ của chính quyền Sài Gòn, thu hơn 400 khẩu súng và giải thoát gần 300 tù chính trị.</p>
+        <p>Chiến thắng Phước Thành đã giáng đòn phủ đầu vào chiến lược "Chiến tranh đặc biệt" của Mỹ, gây chấn động chính quyền Sài Gòn và Chính phủ Mỹ. Tài liệu mật của Lầu Năm Góc cũng đánh giá đây là một trong những trận tiến công khiến Sài Gòn rơi vào khủng hoảng và là dấu mốc báo hiệu sự phá sản của chiến lược này.</p>
+        <p>Ngày nay, Tượng đài Chiến thắng Phước Thành không chỉ là nơi tưởng nhớ các anh hùng liệt sĩ đã chiến đấu, hy sinh vì độc lập dân tộc mà còn là địa chỉ đỏ giáo dục truyền thống yêu nước và tinh thần đấu tranh bất khuất cho các thế hệ mai sau.</p>
+      </div>
 
       <div class="audio-player" role="group" aria-label="Trình phát âm thanh thuyết minh">
         <button id="audio-toggle" class="audio-play" type="button" aria-label="Play narration audio">▶</button>
@@ -268,9 +273,7 @@
       <p class="footer-map-address" data-i18n-key="footer.mapAddress">Xã Phú Giáo, TP.HCM</p>
     </div>
   </div>
-  <div class="footer-bottom">
-    <p data-i18n-key="footer.copyright">Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành<br>Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số<br>Chiến dịch Tình nguyện Sinh viên Kinh tế 2026</p>
-  </div>
+
 </footer>
 
 <script>
@@ -318,11 +321,15 @@
   };
 
   const playNarration = () => {
-    const expectedSrc = getNarrationSrc(currentLang) + '?v=9'; // Updated to v=8
+    const expectedSrc = getNarrationSrc(currentLang) + '?v=10'; // Bumping to v=10
     if (!narrationAudio.src || !narrationAudio.src.includes(getNarrationSrc(currentLang))) {
       narrationAudio.src = expectedSrc;
       narrationAudio.load();
     }
+    
+    // Set status to loading (⌛)
+    if (audioToggle) audioToggle.textContent = '⌛';
+    
     narrationAudio.play().then(() => {
       setAudioState(true);
     }).catch((err) => {
@@ -334,6 +341,8 @@
       }).catch((e) => {
         console.error("Audio retry failed:", e);
         setAudioState(false);
+        // Fallback alert dialog
+        alert("Lỗi phát âm thanh: Trình duyệt của bạn chặn tự động phát hoặc tệp đang tải. Vui lòng thử lại sau vài giây hoặc dùng Tab ẩn danh.");
       });
     });
   };
@@ -434,7 +443,7 @@
       'model3d.body': 'Khám phá Tượng đài Chiến thắng Phước Thành qua mô hình 3D tương tác. Công trình được xây dựng bằng đá hoa cương, cao 13 mét, tọa lạc trong khuôn viên vườn hoa trung tâm thị trấn Phước Vĩnh với tổng diện tích hơn 12.059 m². Sử dụng chuột hoặc ngón tay để xoay, phóng to và quan sát từ mọi góc độ.',
       'model3d.help': 'Kéo để xoay • Cuộn để phóng to',
       'narration.title': 'THUYẾT MINH DI TÍCH',
-      'narration.body': 'Tượng đài Chiến thắng Phước Thành là công trình tưởng niệm chiến thắng lịch sử diễn ra vào đêm 17 rạng sáng 18 tháng 9 năm 1961.<br><br>Trong trận đánh này, quân và dân ta đã bất ngờ tiến công và làm chủ hoàn toàn tỉnh lỵ Phước Thành chỉ sau khoảng một giờ ba mươi phút chiến đấu. Đây là lần đầu tiên lực lượng cách mạng đánh chiếm thành công một tỉnh lỵ của chính quyền Sài Gòn, thu hơn 400 khẩu súng và giải thoát gần 300 tù chính trị.<br><br>Chiến thắng Phước Thành đã giáng đòn phủ đầu vào chiến lược "Chiến tranh đặc biệt" của Mỹ, gây chấn động chính quyền Sài Gòn và Chính phủ Mỹ. Tài liệu mật của Lầu Năm Góc cũng đánh giá đây là một trong những trận tiến công khiến Sài Gòn rơi vào khủng hoảng và là dấu mốc báo hiệu sự phá sản của chiến lược này.<br><br>Ngày nay, Tượng đài Chiến thắng Phước Thành không chỉ là nơi tưởng nhớ các anh hùng liệt sĩ đã chiến đấu, hy sinh vì độc lập dân tộc mà còn là địa chỉ đỏ giáo dục truyền thống yêu nước và tinh thần đấu tranh bất khuất cho các thế hệ mai sau.',
+      'narration.body': '<p>Tượng đài Chiến thắng Phước Thành là công trình tưởng niệm chiến thắng lịch sử diễn ra vào đêm 17 rạng sáng 18 tháng 9 năm 1961.</p><p>Trong trận đánh này, quân và dân ta đã bất ngờ tiến công và làm chủ hoàn toàn tỉnh lỵ Phước Thành chỉ sau khoảng một giờ ba mươi phút chiến đấu. Đây là lần đầu tiên lực lượng cách mạng đánh chiếm thành công một tỉnh lỵ của chính quyền Sài Gòn, thu hơn 400 khẩu súng và giải thoát gần 300 tù chính trị.</p><p>Chiến thắng Phước Thành đã giáng đòn phủ đầu vào chiến lược "Chiến tranh đặc biệt" của Mỹ, gây chấn động chính quyền Sài Gòn và Chính phủ Mỹ. Tài liệu mật của Lầu Năm Góc cũng đánh giá đây là một trong những trận tiến công khiến Sài Gòn rơi vào khủng hoảng và là dấu mốc báo hiệu sự phá sản của chiến lược này.</p><p>Ngày nay, Tượng đài Chiến thắng Phước Thành không chỉ là nơi tưởng nhớ các anh hùng liệt sĩ đã chiến đấu, hy sinh vì độc lập dân tộc mà còn là địa chỉ đỏ giáo dục truyền thống yêu nước và tinh thần đấu tranh bất khuất cho các thế hệ mai sau.</p>',
       'narration.button': 'Bắt đầu nghe',
       'timeline.heading': 'LỊCH SỬ HÌNH THÀNH',
       'timeline.item1.title': 'Thành lập tỉnh Phước Thành',
@@ -485,7 +494,7 @@
       'model3d.body': 'Explore the Phuoc Thanh Victory Monument through an interactive 3D model. Built of granite, standing 13 meters tall, the monument is located in the central park of Phuoc Vinh town, spanning over 12,059 m². Use your mouse or fingers to rotate, zoom, and observe from every angle.',
       'model3d.help': 'Drag to rotate • Scroll to zoom',
       'narration.title': 'SITE NARRATION',
-      'narration.body': 'The Phuoc Thanh Victory Monument is a memorial to the historical victory that took place on the night of September 17th to the morning of September 18th, 1961.<br><br>In this battle, our armed forces and people launched a surprise attack and completely took control of the Phuoc Thanh provincial capital after only about an hour and thirty minutes of combat. This was the first time the revolutionary forces successfully captured a provincial capital of the Saigon regime, capturing over 400 weapons and liberating nearly 300 political prisoners.<br><br>The Phuoc Thanh Victory dealt a decisive preemptive blow to the American "Special War" strategy, causing shockwaves in both the Saigon administration and the US government. The Pentagon Papers also assessed this as one of the offensives that threw Saigon into crisis and a milestone signaling the failure of this strategy.<br><br>Today, the Phuoc Thanh Victory Monument is not only a place to commemorate the heroic martyrs who fought and sacrificed for national independence but also a red address to educate future generations on patriotism and the spirit of indomitable struggle.',
+      'narration.body': '<p>The Phuoc Thanh Victory Monument is a memorial to the historical victory that took place on the night of September 17th to the morning of September 18th, 1961.</p><p>In this battle, our armed forces and people launched a surprise attack and completely took control of the Phuoc Thanh provincial capital after only about an hour and thirty minutes of combat. This was the first time the revolutionary forces successfully captured a provincial capital of the Saigon regime, capturing over 400 weapons and liberating nearly 300 political prisoners.</p><p>The Phuoc Thanh Victory dealt a decisive preemptive blow to the American "Special War" strategy, causing shockwaves in both the Saigon administration and the US government. The Pentagon Papers also assessed this as one of the offensives that threw Saigon into crisis and a milestone signaling the failure of this strategy.</p><p>Today, the Phuoc Thanh Victory Monument is not only a place to commemorate the heroic martyrs who fought and sacrificed for national independence but also a red address to educate future generations on patriotism and the spirit of indomitable struggle.</p>',
       'narration.button': 'Start listening',
       'timeline.heading': 'FORMATION HISTORY',
       'timeline.item1.title': 'Establishment of Phuoc Thanh Province',
@@ -553,7 +562,7 @@
     if (!narrationAudio.src.includes(expectedSrc)) {
       const wasPlaying = !narrationAudio.paused;
       if (wasPlaying) {
-        narrationAudio.src = expectedSrc + '?v=9';
+        narrationAudio.src = expectedSrc + '?v=10';
         narrationAudio.load();
         playNarration();
       } else {

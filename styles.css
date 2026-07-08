@@ -1149,8 +1149,32 @@ h3 {
   .header-inner {
     padding: 0.9rem 1.2rem;
   }
+  .brand {
+    order: 1;
+  }
+  .header-actions {
+    display: contents; /* Promote children to header-inner flex layout */
+  }
+  .lang-toggle {
+    order: 2;
+    margin-left: auto;
+  }
   .main-nav {
-    display: none !important; /* Hide navigation links on tablet */
+    order: 3;
+    display: flex !important; /* Restore navigation links on tablet and mobile */
+    width: 100%;
+    justify-content: center;
+    gap: 0.6rem 1.1rem;
+    padding: 0.5rem 0 0.2rem;
+    margin-top: 0.4rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.12); /* Add divider */
+    overflow-x: auto; /* Horizontal scroll if menu doesn't fit */
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .main-nav a {
+    font-size: 0.8rem;
+    padding: 0.1rem 0.3rem;
   }
 
   .hero-inner,
@@ -1487,4 +1511,14 @@ h3 {
 @keyframes marquee-sticky {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
+}
+
+.narration-text p {
+  text-align: justify;
+  margin-bottom: 1.25rem;
+  font-size: inherit;
+  line-height: inherit;
+}
+.narration-text p:last-child {
+  margin-bottom: 0;
 }

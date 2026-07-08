@@ -802,9 +802,9 @@ h3 {
 }
 .section-heading h2 {
   font-size: clamp(2.2rem, 3.2vw, 3.2rem);
-  color: var(--white);
+  color: var(--forest-dark); /* Changed from white to deep chocolate brown */
   letter-spacing: 0.04em;
-  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.22);
+  text-shadow: none; /* Removed dark text shadow */
 }
 
 .timeline {

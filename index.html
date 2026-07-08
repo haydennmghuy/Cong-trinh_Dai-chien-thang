@@ -6,7 +6,7 @@
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Xã Phú Giáo, TP.HCM.">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1783522152650">
+<link rel="stylesheet" href="styles.css?v=1783522827399">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -463,6 +463,7 @@
       'footer.addressLabel': 'Địa chỉ:',
       'footer.address': 'Xã Phú Giáo, TP.HCM, Việt Nam',
       'footer.mapAddress': 'Xã Phú Giáo, TP.HCM',
+      'footer.copyrightMarquee': 'Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành - Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số - Chiến dịch Tình nguyện Sinh viên Kinh tế 2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'footer.explore': 'Khám phá',
       'footer.info': 'Thông tin',
       'footer.map': 'Bản đồ',
@@ -484,7 +485,7 @@
       'model3d.body': 'Explore the Phuoc Thanh Victory Monument through an interactive 3D model. Built of granite, standing 13 meters tall, the monument is located in the central park of Phuoc Vinh town, spanning over 12,059 m². Use your mouse or fingers to rotate, zoom, and observe from every angle.',
       'model3d.help': 'Drag to rotate • Scroll to zoom',
       'narration.title': 'SITE NARRATION',
-      'narration.body': 'The Phuoc Thanh Victory Monument is a memorial to the historical victory that took place on the night of September 17th to the morning of September 18th, 1961.<br><br>In this battle, our armed forces and people launched a surprise attack and completely took control of the Phuoc Thanh provincial capital after only about an hour and thirty minutes of combat. This was the first time the revolutionary forces successfully captured a provincial capital of the Saigon regime, capturing over 400 weapons and liberating nearly 300 political prisoners.<br><br>The Phuoc Thanh Victory dealt a decisive preemptive blow to the American 'Special War' strategy, causing shockwaves in both the Saigon administration and the US government. The Pentagon Papers also assessed this as one of the offensives that threw Saigon into crisis and a milestone signaling the failure of this strategy.<br><br>Today, the Phuoc Thanh Victory Monument is not only a place to commemorate the heroic martyrs who fought and sacrificed for national independence but also a red address to educate future generations on patriotism and the spirit of indomitable struggle.',
+      'narration.body': 'The Phuoc Thanh Victory Monument is a memorial to the historical victory that took place on the night of September 17th to the morning of September 18th, 1961.<br><br>In this battle, our armed forces and people launched a surprise attack and completely took control of the Phuoc Thanh provincial capital after only about an hour and thirty minutes of combat. This was the first time the revolutionary forces successfully captured a provincial capital of the Saigon regime, capturing over 400 weapons and liberating nearly 300 political prisoners.<br><br>The Phuoc Thanh Victory dealt a decisive preemptive blow to the American "Special War" strategy, causing shockwaves in both the Saigon administration and the US government. The Pentagon Papers also assessed this as one of the offensives that threw Saigon into crisis and a milestone signaling the failure of this strategy.<br><br>Today, the Phuoc Thanh Victory Monument is not only a place to commemorate the heroic martyrs who fought and sacrificed for national independence but also a red address to educate future generations on patriotism and the spirit of indomitable struggle.',
       'narration.button': 'Start listening',
       'timeline.heading': 'FORMATION HISTORY',
       'timeline.item1.title': 'Establishment of Phuoc Thanh Province',
@@ -513,6 +514,7 @@
       'footer.addressLabel': 'Address:',
       'footer.address': 'Phu Giao Commune, HCMC, Vietnam',
       'footer.mapAddress': 'Phu Giao Commune, HCMC',
+      'footer.copyrightMarquee': 'Digital Red Site Digitalization Project - Phuoc Thanh Victory Monument - Carried out by the Digital Skills Enhancement Team - Student Economic Volunteer Campaign 2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
       'footer.explore': 'Explore',
       'footer.info': 'Information',
       'footer.map': 'Map',
@@ -533,7 +535,7 @@
       const value = getTranslation(lang, element.getAttribute('data-i18n-key'));
       if (value) {
         const key = element.getAttribute('data-i18n-key');
-        if (key === 'footer.copyright' || key === 'hero.title') {
+        if (key === 'footer.copyright' || key === 'hero.title' || key === 'footer.copyrightMarquee') {
           element.innerHTML = value;
         } else {
           element.textContent = value;
@@ -596,5 +598,12 @@
   applyLanguage(currentLang);
 </script>
 
+<!-- STICKY FOOTER MARQUEE -->
+<div class="sticky-footer-marquee" aria-hidden="true">
+  <div class="sticky-marquee-content">
+    <span data-i18n-key="footer.copyrightMarquee">Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành - Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số - Chiến dịch Tình nguyện Sinh viên Kinh tế 2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <span data-i18n-key="footer.copyrightMarquee">Công trình số hóa địa chỉ đỏ Di tích lịch sử Tượng đài Chiến thắng Phước Thành - Thực hiện bởi đội hình Chuyên Nâng cao Kỹ năng số - Chiến dịch Tình nguyện Sinh viên Kinh tế 2026 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
 </body>
 </html>

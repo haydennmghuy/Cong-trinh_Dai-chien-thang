@@ -252,6 +252,8 @@ h3 {
   gap: 0.7rem;
   text-decoration: none;
   color: inherit;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .header-actions {
@@ -1184,9 +1186,9 @@ h3 {
     -webkit-text-size-adjust: 100%;
   }
 
-  body, p { font-size: 0.95rem; line-height: 1.7; }
+  body, p { font-size: 0.9rem; line-height: 1.65; }
 
-  h2 { font-size: clamp(1.4rem, 5vw, 1.8rem); }
+  h2 { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
   h3 { font-size: clamp(1.1rem, 4vw, 1.3rem); }
 
   /* Consistent side padding */
@@ -1208,7 +1210,14 @@ h3 {
     gap: 0.5rem;
   }
   .brand-mark { width: 32px; height: 32px; font-size: 0.9rem; }
-  .brand-name { font-size: 0.9rem; }
+  .brand-name {
+    font-size: 0.8rem;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+  .brand-name small {
+    display: none !important; /* Hide subtitle on mobile to prevent header overflow */
+  }
   .brand { gap: 0.4rem; }
 
   /* Navigation hidden via tablet media query */
@@ -1342,9 +1351,15 @@ h3 {
   /* Hide marquee banners */
   .timeline-marquee { display: none; }
 
-  /* Hide spine and dots */
-  .timeline-spine { display: none; }
-  .timeline-item::after { display: none; }
+  /* Restore spine and dots on mobile, aligned to the left */
+  .timeline-spine {
+    display: block !important;
+    left: 16px !important;
+  }
+  .timeline-item::after {
+    display: block !important;
+    left: 16px !important;
+  }
 
   /* Reset timeline items to simple stacked cards */
   .timeline {
@@ -1358,8 +1373,8 @@ h3 {
     display: flex;
     flex-direction: column;
     grid-template-columns: unset;
-    padding-left: 0;
-    padding-right: 0;
+    padding-left: 40px !important; /* Left space for spine and dots */
+    padding-right: 0 !important;
     margin-bottom: 0;
     gap: 0.75rem;
   }
@@ -1440,3 +1455,36 @@ h3 {
   }
 }
 
+
+/* ── Sticky Footer Marquee ── */
+.sticky-footer-marquee {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #3D1D11; /* Dark chocolate brown */
+  border-top: 1.5px solid var(--bronze-light);
+  color: var(--smoke-warm);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 500;
+  line-height: 24px;
+  height: 24px;
+  z-index: 9999;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sticky-marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee-sticky 32s linear infinite;
+  width: max-content;
+}
+.sticky-marquee-content span {
+  display: inline-block;
+  padding-right: 2rem;
+}
+@keyframes marquee-sticky {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

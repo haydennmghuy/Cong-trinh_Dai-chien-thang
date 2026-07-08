@@ -497,7 +497,7 @@ h3 {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
-  background: linear-gradient(to bottom, #BCE2FA 0%, #E8F5FD 70%, #FFFDF9 100%); /* Clear daylight sky gradient */
+  background: linear-gradient(to bottom, #BCE2FA 0%, #E8F5FD 60%, #D4EDDA 85%, #C3E6CB 100%); /* Clear blue sky transitioning to a soft grass green at the bottom */
   border: 1px solid rgba(201, 168, 76, 0.35);
   border-radius: 12px;
   overflow: hidden;

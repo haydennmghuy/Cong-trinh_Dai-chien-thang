@@ -1164,8 +1164,8 @@ h3 {
     display: flex !important; /* Restore navigation links on tablet and mobile */
     width: 100%;
     justify-content: center;
-    gap: 0.6rem 1.1rem;
-    padding: 0.5rem 0 0.2rem;
+    gap: 0.4rem 0.8rem; /* Smaller gap */
+    padding: 0.4rem 0 0.2rem;
     margin-top: 0.4rem;
     border-top: 1px solid rgba(212, 175, 55, 0.12); /* Add divider */
     overflow-x: auto; /* Horizontal scroll if menu doesn't fit */
@@ -1173,8 +1173,8 @@ h3 {
     -webkit-overflow-scrolling: touch;
   }
   .main-nav a {
-    font-size: 0.8rem;
-    padding: 0.1rem 0.3rem;
+    font-size: 0.72rem; /* Reduced font size from 0.8rem to 0.72rem */
+    padding: 0.1rem 0.2rem;
   }
 
   .hero-inner,

@@ -6,7 +6,7 @@
 <title>Tượng đài Chiến thắng Phước Thành | Di tích lịch sử</title>
 <meta name="description" content="Tượng đài Chiến thắng Phước Thành - Đòn phủ đầu chiến lược Chiến tranh đặc biệt của Mỹ ngụy. Xã Phú Giáo, TP.HCM.">
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=1783521828187">
+<link rel="stylesheet" href="styles.css?v=1783522152650">
 <!-- Google model-viewer for 3D GLB -->
 <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.5.0/model-viewer.min.js"></script>
 </head>
@@ -139,10 +139,7 @@
 
     <article class="timeline-item is-right">
       <div class="timeline-media">
-        <div class="placeholder-image placeholder-timeline">
-          <div class="placeholder-icon">📷</div>
-          <span>Cần bổ sung hình ảnh<br><small>Phong trào Đồng Khởi 1960</small></span>
-        </div>
+        <img src="Ảnh/dong_khoi.png" alt="Phong trào Đồng Khởi" class="timeline-photo">
       </div>
       <div class="timeline-content">
         <span class="timeline-year">1960</span>
@@ -153,10 +150,7 @@
 
     <article class="timeline-item is-left">
       <div class="timeline-media">
-        <div class="placeholder-image placeholder-timeline">
-          <div class="placeholder-icon">📷</div>
-          <span>Cần bổ sung hình ảnh<br><small>Trận đánh Phước Thành 18/9/1961</small></span>
-        </div>
+        <img src="Ảnh/chien_thang_phuoc_thanh.png" alt="Chiến thắng Phước Thành" class="timeline-photo">
       </div>
       <div class="timeline-content">
         <span class="timeline-year">18/09/1961</span>
@@ -167,10 +161,7 @@
 
     <article class="timeline-item is-right">
       <div class="timeline-media">
-        <div class="placeholder-image placeholder-timeline">
-          <div class="placeholder-icon">📷</div>
-          <span>Cần bổ sung hình ảnh<br><small>Phát huy chiến thắng, mở rộng vùng giải phóng</small></span>
-        </div>
+        <img src="Ảnh/sau_1961.png" alt="Mở rộng vùng giải phóng" class="timeline-photo">
       </div>
       <div class="timeline-content">
         <span class="timeline-year">Sau 1961</span>
@@ -327,7 +318,7 @@
   };
 
   const playNarration = () => {
-    const expectedSrc = getNarrationSrc(currentLang) + '?v=8'; // Updated to v=8
+    const expectedSrc = getNarrationSrc(currentLang) + '?v=9'; // Updated to v=8
     if (!narrationAudio.src || !narrationAudio.src.includes(getNarrationSrc(currentLang))) {
       narrationAudio.src = expectedSrc;
       narrationAudio.load();
@@ -560,7 +551,7 @@
     if (!narrationAudio.src.includes(expectedSrc)) {
       const wasPlaying = !narrationAudio.paused;
       if (wasPlaying) {
-        narrationAudio.src = expectedSrc + '?v=8';
+        narrationAudio.src = expectedSrc + '?v=9';
         narrationAudio.load();
         playNarration();
       } else {

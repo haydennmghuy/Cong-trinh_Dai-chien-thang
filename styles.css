@@ -598,11 +598,11 @@ h3 {
 
 .narration-media img {
   border-radius: var(--radius);
-  aspect-ratio: 4 / 3; /* Landscape photo aspect ratio */
+  aspect-ratio: auto; /* Preserve natural image proportions */
   width: 100%;
   max-width: 480px; /* Centered and bounded */
   height: auto;
-  object-fit: cover;
+  object-fit: contain;
   border: 1px solid rgba(173, 135, 72, 0.4);
   box-shadow: var(--shadow-soft);
 }
@@ -1307,12 +1307,12 @@ h3 {
     order: -1;
   }
   .narration-media img {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: auto; /* Preserve natural image proportions */
     width: 100%;
     height: auto;
-    max-height: 240px;
+    max-height: 280px;
     border-radius: 10px;
-    object-fit: cover;
+    object-fit: contain;
   }
   .narration-copy {
     text-align: left;

@@ -669,6 +669,9 @@ h3 {
 .narration-copy p {
   color: var(--ink-soft); /* High contrast dark sepia instead of light grey */
   max-width: 58ch;
+  font-size: 0.96rem; /* Slightly smaller font size */
+  line-height: 1.75;
+  text-align: justify; /* Justified text alignment */
 }
 
 /* Audio player */
@@ -1366,8 +1369,9 @@ h3 {
     text-align: left;
   }
   .narration-copy p {
-    font-size: 0.95rem;
-    line-height: 1.7;
+    font-size: 0.9rem; /* Slightly smaller size for mobile */
+    line-height: 1.65;
+    text-align: justify; /* Justified text alignment */
   }
 
   /* Audio player — compact */

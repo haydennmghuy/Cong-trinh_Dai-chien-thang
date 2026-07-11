@@ -1428,11 +1428,11 @@ h3 {
     left: 16px !important;
   }
 
-  /* Reset timeline items to simple stacked cards */
+  /* Reset timeline items to simple stacked cards with spacious gaps */
   .timeline {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3.2rem;
   }
 
   .timeline-item,
@@ -1514,8 +1514,11 @@ h3 {
   img, iframe, .hero, .hero-inner { max-width: 100%; }
   .brand-name, .footer-col ul, .footer-contact li { word-break: keep-all; }
 
-  /* All text left-aligned on mobile */
-  .section-heading,
+  /* All text left-aligned on mobile and section heading margin set */
+  .section-heading {
+    text-align: left;
+    margin-bottom: 2.2rem !important;
+  }
   .section-heading h2,
   .section-heading p {
     text-align: left;

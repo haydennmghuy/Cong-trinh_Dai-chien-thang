@@ -1022,6 +1022,10 @@ h3 {
   margin-left: 2px;
   vertical-align: baseline;
 }
+.stat-number small:first-child {
+  margin-left: 0;
+  margin-right: 4px;
+}
 
 .stat-label {
   font-size: 0.85rem;
